@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/api_overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/asset/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/symbol/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/hq_api/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/hq_ws/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/order_spot/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/order_options/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://bitwell-tech.github.io/oapi/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://bitwell-tech.github.io/oapi/"
+                />
+  </url>
+  
+</urlset>
