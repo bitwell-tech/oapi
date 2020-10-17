@@ -3,31 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/api_overview/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/1.overview/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/asset/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/2.market/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/symbol/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/3.asset/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/hq_api/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/4.spot_order/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/hq_ws/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/5.options_order/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/order_spot/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/6.hq_api/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/order_options/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/7.hq_ws/</loc>
   </url>
   
   <url>
