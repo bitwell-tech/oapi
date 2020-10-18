@@ -15,7 +15,7 @@
 
 
 
-<link href='/oapi/styles/screen.min.ebadf232906ab65f4ce4a7ac6644017207ff3439b76f2fafe4873b0fbcc55041.css' rel="stylesheet" media="screen" integrity="sha256-663yMpBqtl9M5KesZkQBcgf/NDm3by&#43;v5Ic7D7zFUEE=" />
+<link href='/oapi/styles/screen.min.e8678de076956ae7b017e5099b56ea9560f0958b0ef594e505f7fb480140c9b6.css' rel="stylesheet" media="screen" integrity="sha256-6GeN4HaVauewF&#43;UJm1bqlWDwlYsO9ZTlBff7SAFAybY=" />
 <link href='/oapi/styles/print.min.e2288ee7d42983088414524ba4bbac63c7cc0bd63f6d3c7b23a28cb7c3719429.css' rel="stylesheet" media="print" integrity="sha256-4iiO59QpgwiEFFJLpLusY8fMC9Y/bTx7I6KMt8NxlCk=" />
 
 
@@ -181,34 +181,48 @@
             </li>
         
             <li>
-                <a href="#hq_api" class="toc-h1 toc-link" data-title="行情数据">行情数据</a>
+                <a href="#hq_api" class="toc-h1 toc-link" data-title="行情API">行情API</a>
                 
                     <ul class="toc-list-h2">
                         
-                            <li><a href="#hq_kline" class="toc-h2 toc-link" data-title="1. K 线数据（蜡烛图）">1. K 线数据（蜡烛图）</a></li>
+                            <li><a href="#hq_kline" class="toc-h2 toc-link" data-title="1. K线数据(蜡烛图)">1. K线数据(蜡烛图)</a></li>
                         
-                            <li><a href="#hq_quote" class="toc-h2 toc-link" data-title="2. 根据交易对获取最新的市场行情">2. 根据交易对获取最新的市场行情</a></li>
+                            <li><a href="#hq_quote" class="toc-h2 toc-link" data-title="2. 获取最新的市场行情">2. 获取最新的市场行情</a></li>
                         
-                            <li><a href="#hq_orderbook" class="toc-h2 toc-link" data-title="3. 根据交易对获取最新的盘口">3. 根据交易对获取最新的盘口</a></li>
+                            <li><a href="#hq_orderbook" class="toc-h2 toc-link" data-title="3. 获取最新的盘口">3. 获取最新的盘口</a></li>
                         
-                            <li><a href="#hq_transaction" class="toc-h2 toc-link" data-title="4. 根据交易对获取最新的成交记录">4. 根据交易对获取最新的成交记录</a></li>
+                            <li><a href="#hq_transaction" class="toc-h2 toc-link" data-title="4. 取最新的成交记录">4. 取最新的成交记录</a></li>
                         
                     </ul>
                 
             </li>
         
             <li>
-                <a href="#hq_ws" class="toc-h1 toc-link" data-title="行情WS">行情WS</a>
+                <a href="#hq_ws" class="toc-h1 toc-link" data-title="WS行情API">WS行情API</a>
                 
                     <ul class="toc-list-h2">
                         
-                            <li><a href="#hq_qa" class="toc-h2 toc-link" data-title="QA">QA</a></li>
+                            <li><a href="#hq_ws_explain" class="toc-h2 toc-link" data-title="WS说明">WS说明</a></li>
                         
-                            <li><a href="#hq_conn" class="toc-h2 toc-link" data-title="建立连接">建立连接</a></li>
+                            <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="鉴权">鉴权</a></li>
                         
-                            <li><a href="#hq_sub" class="toc-h2 toc-link" data-title="订阅数据">订阅数据</a></li>
+                            <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="订阅数据方式">订阅数据方式</a></li>
                         
-                            <li><a href="#hq_date_type" class="toc-h2 toc-link" data-title="数据结构">数据结构</a></li>
+                            <li><a href="#hq_ws_data_index" class="toc-h2 toc-link" data-title="数据索引">数据索引</a></li>
+                        
+                            <li><a href="#hq_ws_data_offer" class="toc-h2 toc-link" data-title="报价数据">报价数据</a></li>
+                        
+                            <li><a href="#hq_ws_data_kline" class="toc-h2 toc-link" data-title="K线数据">K线数据</a></li>
+                        
+                            <li><a href="#hq_ws_data_tick" class="toc-h2 toc-link" data-title="逐笔数据">逐笔数据</a></li>
+                        
+                            <li><a href="#hq_ws_data_handicap" class="toc-h2 toc-link" data-title="盘口数据">盘口数据</a></li>
+                        
+                            <li><a href="#hq_ws_data_options" class="toc-h2 toc-link" data-title="期权信息数据">期权信息数据</a></li>
+                        
+                            <li><a href="#hq_ws_user_order" class="toc-h2 toc-link" data-title="用户订单">用户订单</a></li>
+                        
+                            <li><a href="#hq_ws_user_options" class="toc-h2 toc-link" data-title="用户期权">用户期权</a></li>
                         
                     </ul>
                 
@@ -4432,7 +4446,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 }
 </code></pre></div>
     
-        <h1 id="hq_api">行情数据</h1>
+        <h1 id="hq_api">行情API</h1>
 <p>输出结构如下</p>
 <table>
 <thead>
@@ -4445,7 +4459,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <tbody>
 <tr>
 <td>data</td>
-<td></td>
+<td>object</td>
 <td>返回数据</td>
 </tr>
 <tr>
@@ -4466,7 +4480,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
     <span style="color:#f92672">&#34;errno&#34;</span>:<span style="color:#ae81ff">0</span>
 }
 </code></pre></div><p>输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0</p>
-<h2 id="hq_kline">1. K 线数据（蜡烛图）</h2>
+<h2 id="hq_kline">1. K线数据(蜡烛图)</h2>
 <p>请求方式: <code>GET</code></p>
 <p>请求地址: <code>/pub/openapi/v1/hq/kline</code></p>
 <p>登录授权: <code>否</code></p>
@@ -4513,32 +4527,103 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 </tr>
 </tbody>
 </table>
-<p>type参数列表:</p>
-<p>1 day</p>
-<p>2 hour</p>
-<p>3 minute</p>
-<p>4 5min</p>
-<p>5 15min</p>
-<p>6 30min</p>
+<p><strong>type</strong>参数列表:</p>
+<table>
+<thead>
+<tr>
+<th>type字段枚举值</th>
+<th>type字段说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>day</td>
+</tr>
+<tr>
+<td>2</td>
+<td>hour</td>
+</tr>
+<tr>
+<td>3</td>
+<td>minute</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5min</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15min</td>
+</tr>
+<tr>
+<td>6</td>
+<td>30min</td>
+</tr>
+</tbody>
+</table>
 <p>返回结果:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;data&#34;</span>: [
     {
       <span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
-      <span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">1593344700</span>, <span style="color:#960050;background-color:#1e0010">#时间</span>
-      <span style="color:#f92672">&#34;open&#34;</span>: <span style="color:#ae81ff">40.34</span>, <span style="color:#960050;background-color:#1e0010">#开盘价</span>
-      <span style="color:#f92672">&#34;close&#34;</span>: <span style="color:#ae81ff">39.79</span>, <span style="color:#960050;background-color:#1e0010">#收盘价</span>
-      <span style="color:#f92672">&#34;high&#34;</span>: <span style="color:#ae81ff">40.34</span>, <span style="color:#960050;background-color:#1e0010">#最高价</span>
-      <span style="color:#f92672">&#34;low&#34;</span>: <span style="color:#ae81ff">39.76</span>,   <span style="color:#960050;background-color:#1e0010">#最低价</span>
-      <span style="color:#f92672">&#34;volume&#34;</span>: <span style="color:#ae81ff">86</span>, <span style="color:#960050;background-color:#1e0010">#成交量</span>
-      <span style="color:#f92672">&#34;amount&#34;</span>: <span style="color:#ae81ff">3439.52</span> <span style="color:#960050;background-color:#1e0010">#成交额</span>
-      <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#ae81ff">5</span>
+      <span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">1593344700</span>,
+      <span style="color:#f92672">&#34;open&#34;</span>: <span style="color:#ae81ff">40.34</span>,
+      <span style="color:#f92672">&#34;close&#34;</span>: <span style="color:#ae81ff">39.79</span>,
+      <span style="color:#f92672">&#34;high&#34;</span>: <span style="color:#ae81ff">40.34</span>,
+      <span style="color:#f92672">&#34;low&#34;</span>: <span style="color:#ae81ff">39.76</span>,
+      <span style="color:#f92672">&#34;volume&#34;</span>: <span style="color:#ae81ff">86</span>,
+      <span style="color:#f92672">&#34;amount&#34;</span>: <span style="color:#ae81ff">3439.52</span>,
+      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#ae81ff">5</span>
     }
   ],
   <span style="color:#f92672">&#34;errmsg&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
   <span style="color:#f92672">&#34;errno&#34;</span>: <span style="color:#ae81ff">0</span>
 }
-</code></pre></div><h2 id="hq_quote">2. 根据交易对获取最新的市场行情</h2>
+</code></pre></div><p>返回字段说明:</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>时间 (单位s)</td>
+</tr>
+<tr>
+<td>open</td>
+<td>开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>最高价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>最低价</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>成交额</td>
+</tr>
+<tr>
+<td>type</td>
+<td>同入参type</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hq_quote">2. 获取最新的市场行情</h2>
 <p>请求方式: <code>GET</code></p>
 <p>请求地址: <code>/pub/openapi/v1/hq/quote</code></p>
 <p>登录授权: <code>否</code></p>
@@ -4661,7 +4746,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 </tr>
 </tbody>
 </table>
-<h2 id="hq_orderbook">3. 根据交易对获取最新的盘口</h2>
+<h2 id="hq_orderbook">3. 获取最新的盘口</h2>
 <p>请求方式: <code>GET</code></p>
 <p>请求地址: <code>/pub/openapi/v1/hq/orderbook</code></p>
 <p>登录授权: <code>否</code></p>
@@ -4767,7 +4852,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 </tr>
 </tbody>
 </table>
-<h2 id="hq_transaction">4. 根据交易对获取最新的成交记录</h2>
+<h2 id="hq_transaction">4. 取最新的成交记录</h2>
 <p>请求方式: <code>GET</code></p>
 <p>请求地址: <code>/pub/openapi/v1/hq/transaction</code></p>
 <p>登录授权: <code>否</code></p>
@@ -4852,19 +4937,19 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 </table>
 
     
-        <h1 id="hq_ws">行情WS</h1>
-<ul>
-<li>线上环境：wss://ws.siyecaosoft.com/v2</li>
-</ul>
-<h2 id="hq_qa">QA</h2>
+        <h1 id="hq_ws">WS行情API</h1>
+<h2 id="hq_ws_explain">WS说明</h2>
+<h3 id="heading">接口地址</h3>
+<p>wss://ws.siyecaosoft.com/v2</p>
+<h3 id="qa">QA</h3>
 <p>QA1:</p>
 <blockquote>
-<p>Q: ws的kline时间 和 kline接口返回历史数据里 date字段的值 单位不太一样</p>
-<p>A: ws的单位是: us , 然后api的单位是: s</p>
+<p>Q: ws的kline时间 和 kline接口返回历史数据里 date字段的值 单位不太一样
+A: ws的单位是: us , 然后api的单位是: s</p>
 </blockquote>
 <p>QA2:</p>
 <blockquote>
-<p>Q: 比如 USDT_BTC-QUOTE 这条指令 如果我发了多次 会合并吗?我发了同样指令  会成倍的返回消息吗</p>
+<p>Q: 比如 USDT_BTC-QUOTE 这条指令 如果我发了多次 会合并吗?我发了同样指令  会成倍的返回消息吗?</p>
 <p>A: 会合并, 不会成倍推送消息, 服务端做了唯一校验,如果当前用户订阅了该key,二次订阅无效</p>
 </blockquote>
 <p>QA3:</p>
@@ -4872,7 +4957,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <p>Q: 如果分钟,小时,天,分时来回的切换的话,我是不是要频繁的先给ws发送unsub请求才行?  先发送unsub 再发送sub</p>
 <p>A: 对, 需要客户端unsub掉历史的, 防止ws泄露(例如用户点击了4下, 如果不unsub, 就会成4倍的推送消息)</p>
 </blockquote>
-<h2 id="hq_conn">建立连接</h2>
+<h3 id="heading-1">建立连接</h3>
 <p>地址如上</p>
 <h3 id="ping-text">ping text</h3>
 <p>由于服务器和客户端维护ws有心跳时间, 如果60s内无心跳,或者无数据通讯, 有可能会造成服务端或者客户端主动断开连接, 所以服务端提供ping text消息, 请在60s返回内定期发送ping text</p>
@@ -4880,10 +4965,24 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 客户端发送消息: <code>ping</code>
 服务端回应: <code>success</code></p>
 <p>如果服务端未回复,有可能是服务端已经主动断开了连接, 请重连</p>
-<h2 id="hq_sub">订阅数据</h2>
-<ul>
-<li>订阅消息需要客户端发送msg(json格式), symbol是交易对数组,所以支持批量和单个订阅</li>
-</ul>
+<h2 id="hq_ws_auth">鉴权</h2>
+<p>鉴权发生在建立连接之后, 客户端主动发送text消息, 消息格式如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;auth&#34;</span>,
+    <span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;openapi&#34;</span>,
+    <span style="color:#f92672">&#34;access_key&#34;</span>: <span style="color:#e6db74">&#34;W2zxxxxND1Wxxxxtdt9gxxxxJFtxxxxQ&#34;</span>,
+    <span style="color:#f92672">&#34;signature&#34;</span>: <span style="color:#e6db74">&#34;4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o=&#34;</span>,
+    <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;1420674445201&#34;</span>
+}
+</code></pre></div><p>鉴权成功后服务端会返回鉴权结果:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;auth&#34;</span>,<span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;openapi&#34;</span>,<span style="color:#f92672">&#34;errmsg&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#f92672">&#34;errno&#34;</span>:<span style="color:#ae81ff">0</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1602583578</span>}
+</code></pre></div><p>说明:</p>
+<ol>
+<li>如果errno不为0, 则说明鉴权失败,失败具体信息参考errmsg</li>
+<li>鉴权逻辑参考 api概述</li>
+</ol>
+<h2 id="hq_ws_auth">订阅数据方式</h2>
+<p>订阅消息需要客户端发送msg(json格式), symbol是交易对数组,所以支持批量和单个订阅</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;sub&#34;</span>,
     <span style="color:#f92672">&#34;symbol&#34;</span>:[<span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,<span style="color:#e6db74">&#34;ETH_USDT&#34;</span>,<span style="color:#e6db74">&#34;BTC_ETH&#34;</span>],
@@ -4892,13 +4991,13 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 </code></pre></div><p>字段说明:</p>
 <p>action: sub订阅，unsub取消订阅</p>
 <p>symbol: 交易对数组,支持批量和单个订阅</p>
-<p>type:</p>
+<h2 id="hq_ws_data_index">数据索引</h2>
+<h3 id="-symbolbtc_usdt-type">行情数据, symbol是具体的交易对(例如:BTC_USDT), type有如下枚举值:</h3>
 <ul>
 <li>quote 报价</li>
 <li>transaction 逐笔交易</li>
 <li>orderbook 盘口数据</li>
 <li>option 期权信息</li>
-<li>swap 合约信息(资金费率, 标记价格)</li>
 <li>kline-15min 15min kline数据</li>
 <li>kline-1min  1min kline数据</li>
 <li>kline-5min  5min kline数据</li>
@@ -4906,8 +5005,15 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <li>kline-60min  一小时 kline数据</li>
 <li>kline-1day  一天 kline数据</li>
 </ul>
-<h2 id="hq_date_type">数据结构</h2>
-<h4 id="heading">报价数据：</h4>
+<h3 id="-symboluser_ordertype">用户订单, symbol是USER_ORDER,type有如下枚举值:</h3>
+<ul>
+<li>state_change 订单状态变更</li>
+</ul>
+<h3 id="-symboluser_option">用户期权, symbol是USER_OPTION</h3>
+<ul>
+<li>pos_change 持仓数量变更</li>
+</ul>
+<h2 id="hq_ws_data_offer">报价数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
 <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-P&#34;</span>,
 <span style="color:#f92672">&#34;trade&#34;</span>:<span style="color:#ae81ff">34.33</span>,
@@ -4927,14 +5033,12 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;quote&#34;</span>,
 <span style="color:#f92672">&#34;state&#34;</span>:<span style="color:#ae81ff">2</span>
 }
-</code></pre></div><p>key说明：
-交易对代码-数据类型
-value说明：</p>
+</code></pre></div><p>字段说明：</p>
 <table>
 <thead>
 <tr>
 <th>字段</th>
-<th>名称</th>
+<th>字段说明</th>
 </tr>
 </thead>
 <tbody>
@@ -5004,7 +5108,7 @@ value说明：</p>
 </tr>
 </tbody>
 </table>
-<h4 id="k">K线数据:</h4>
+<h2 id="hq_ws_data_kline">K线数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"> {
     <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
     <span style="color:#f92672">&#34;open&#34;</span>:<span style="color:#ae81ff">1.0</span>,
@@ -5020,7 +5124,7 @@ value说明：</p>
 <thead>
 <tr>
 <th>字段</th>
-<th>名称</th>
+<th>字段说明</th>
 </tr>
 </thead>
 <tbody>
@@ -5054,7 +5158,7 @@ value说明：</p>
 </tr>
 </tbody>
 </table>
-<h4 id="heading-1">逐笔数据：</h4>
+<h2 id="hq_ws_data_tick">逐笔数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
     {
     <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
@@ -5063,7 +5167,7 @@ value说明：</p>
     <span style="color:#f92672">&#34;amount&#34;</span>:<span style="color:#ae81ff">156.04</span>,
     <span style="color:#f92672">&#34;direction&#34;</span>:<span style="color:#ae81ff">1</span>,
     <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
-    <span style="color:#f92672">&#34;open_mode&#34;</span>:<span style="color:#e6db74">&#34;open&#34;</span>, <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">open</span> <span style="color:#960050;background-color:#1e0010">开仓,</span> <span style="color:#960050;background-color:#1e0010">close</span> <span style="color:#960050;background-color:#1e0010">平仓</span> <span style="color:#960050;background-color:#1e0010">other</span> <span style="color:#960050;background-color:#1e0010">其他</span>
+    <span style="color:#f92672">&#34;open_mode&#34;</span>:<span style="color:#e6db74">&#34;open&#34;</span>,
     <span style="color:#f92672">&#34;time_us&#34;</span>:<span style="color:#ae81ff">1593347347135782</span>,
     <span style="color:#f92672">&#34;sn&#34;</span>:<span style="color:#ae81ff">198669755295637272</span>
     },
@@ -5082,8 +5186,8 @@ value说明：</p>
 <table>
 <thead>
 <tr>
-<th>key</th>
-<th>value</th>
+<th>字段</th>
+<th>字段说明</th>
 </tr>
 </thead>
 <tbody>
@@ -5121,7 +5225,7 @@ value说明：</p>
 </tr>
 </tbody>
 </table>
-<h4 id="heading-2">盘口数据：</h4>
+<h2 id="hq_ws_data_handicap">盘口数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;bid&#34;</span>:{
         <span style="color:#f92672">&#34;38.76&#34;</span>:<span style="color:#ae81ff">1</span>,
@@ -5145,16 +5249,49 @@ value说明：</p>
     <span style="color:#f92672">&#34;sn&#34;</span>:<span style="color:#ae81ff">198669755295637354</span>
 }
 
-</code></pre></div><pre><code>bid委买盘口数组
-    key     价格
-    value   数量
-ask委卖盘口数组   
-    key     价格
-    value   数量
-trade   最新一笔成交价
-volume  最近一笔成交量
-</code></pre>
-<h4 id="heading-3">期权信息数据：</h4>
+</code></pre></div><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bid</td>
+<td>委买盘口数组</td>
+</tr>
+<tr>
+<td>&mdash;key</td>
+<td>价格</td>
+</tr>
+<tr>
+<td>&mdash;value</td>
+<td>数量</td>
+</tr>
+<tr>
+<td>ask</td>
+<td>委卖盘口数组</td>
+</tr>
+<tr>
+<td>&mdash;key</td>
+<td>价格</td>
+</tr>
+<tr>
+<td>&mdash;value</td>
+<td>数量</td>
+</tr>
+<tr>
+<td>trade</td>
+<td>最新一笔成交价</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>最近一笔成交量</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hq_ws_data_options">期权信息数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;theory_price&#34;</span>:<span style="color:#ae81ff">35.95</span>, <span style="color:#960050;background-color:#1e0010">#理论价格</span>
     <span style="color:#f92672">&#34;delta&#34;</span>:<span style="color:#ae81ff">0.5389</span>,
@@ -5168,14 +5305,148 @@ volume  最近一笔成交量
     <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;option&#34;</span>
 }
 
-</code></pre></div><h4 id="swap--">swap 合约信息(资金费率, 标记价格)</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;funding_rate&#34;</span>:<span style="color:#ae81ff">-0.000123</span>, <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">资金费率</span>
-    <span style="color:#f92672">&#34;theory_price&#34;</span>:<span style="color:#ae81ff">9143.13</span> <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">标记价格</span>
-    <span style="color:#e6db74">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>
-    <span style="color:#e6db74">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;swap&#34;</span>
+</code></pre></div><p>字段说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字段说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>theory_price</td>
+<td>理论价格</td>
+</tr>
+<tr>
+<td>delta</td>
+<td>delta</td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>gamma</td>
+</tr>
+<tr>
+<td>theta</td>
+<td>theta</td>
+</tr>
+<tr>
+<td>vega</td>
+<td>vega</td>
+</tr>
+<tr>
+<td>leverage</td>
+<td>杠杆率</td>
+</tr>
+<tr>
+<td>iv</td>
+<td>隐含波动率</td>
+</tr>
+<tr>
+<td>open_positions</td>
+<td>未平持仓数</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>subtype</td>
+<td>订阅的type</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hq_ws_user_order">用户订单</h2>
+<p>字段说明:</p>
+<p>action: sub订阅，unsub取消订阅</p>
+<p>symbol: <code>USER_ORDER</code></p>
+<p>type:</p>
+<ul>
+<li>state_change 订单状态变更</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10100002605782</span>,
+    <span style="color:#e6db74">&#34;queue_price&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">12990</span>,
+    <span style="color:#e6db74">&#34;queue_volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0.009</span>,
+    <span style="color:#e6db74">&#34;state&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>
 }
-</code></pre></div>
+</code></pre></div><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>queue_price</td>
+<td>float64</td>
+<td>挂单价</td>
+</tr>
+<tr>
+<td>queue_volume</td>
+<td>float64</td>
+<td>挂单量</td>
+</tr>
+<tr>
+<td>state</td>
+<td>int</td>
+<td>订单状态</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hq_ws_user_options">用户期权</h2>
+<p>字段说明:</p>
+<p>action: sub订阅，unsub取消订阅</p>
+<p>symbol: <code>USER_OPTION</code></p>
+<p>type:</p>
+<ul>
+<li>pos_change 持仓数量变更</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+	<span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC-20201016-7500-C&#34;</span>
+	<span style="color:#e6db74">&#34;open_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy&#34;</span>,
+	<span style="color:#e6db74">&#34;open_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+	<span style="color:#e6db74">&#34;frozen_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>交易对code</td>
+</tr>
+<tr>
+<td>open_mode</td>
+<td>string</td>
+<td>开仓方式， buy: 开仓买入， margin_sell:保证金卖出，covered_sell:备兑卖出</td>
+</tr>
+<tr>
+<td>open_volume</td>
+<td>int</td>
+<td>开仓数量</td>
+</tr>
+<tr>
+<td>frozen_volume</td>
+<td>int</td>
+<td>冻结数量</td>
+</tr>
+</tbody>
+</table>
+
     
 
         </div>
