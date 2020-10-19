@@ -255,21 +255,20 @@
 <p>如果传入有效的APIKey 用用户ID限速；如果没有则拿公网IP限速。</p>
 <p>限速规则：各个接口上有单独的说明，如果没有一般接口限速为 5次/秒。</p>
 <h2 id="verification">2. 验证</h2>
-<p>本章节主要为验证的细节分以下五个方面：</p>
+<p>本章节主要为验证的细节分以下4个方面：</p>
 <ul>
 <li>生成APIKey</li>
 <li>发起请求</li>
 <li>签名</li>
 <li>时间戳</li>
-<li>获取服务器时间</li>
 </ul>
 <h3 id="21-apikey">2.1 生成APIKey</h3>
-<p>在对任何请求进行签名之前，您必须通过BITWELL网站创建一个APIKey。创建APIKey后，您将获得2个必须记住的信息：</p>
+<p>在对任何请求进行签名之前，您必须通过BitWell网站创建一个APIKey。创建APIKey后，您将获得2个必须记住的信息：</p>
 <ul>
 <li>APIKey</li>
 <li>SecretKey</li>
 </ul>
-<p>APIKey和SecretKey将由BITWELL生成和提供。</p>
+<p>APIKey和SecretKey将由BitWell生成和提供。</p>
 <h3 id="22-">2.2 发起请求</h3>
 <p>所有REST请求头都必须包含如下KEY：</p>
 <ul>
@@ -311,7 +310,7 @@
 <tr>
 <td>Request Path</td>
 <td>请求接口路径</td>
-<td>-</td>
+<td>GET请求包含query参数</td>
 <td>/order/pending?num=30</td>
 </tr>
 <tr>
@@ -393,67 +392,15 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <h3 id="24-">2.4 时间戳</h3>
 <p>BW-ACCESS-TIMESTAMP请求头必须是Unix时间戳格式（如：1420674445201），精确到毫秒</p>
 <h3 id="25-websocket-">2.5 Websocket 签名</h3>
-<p>注意：Websocket 签名时 <code>requestPath</code> 和 <code>body</code> 设为空字符串，如下PHP示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$apiKey <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xxxx...&#39;</span>;
-$apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xxxx...&#39;</span>;
+<p>注意：Websocket 签名时 <code>Request Path</code> 和 <code>Request Body</code> 设为空字符串</p>
 
-<span style="color:#a6e22e">getSign</span>(<span style="color:#e6db74">&#39;POST&#39;</span>, $apiKey, $apiSecret);
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getSign</span>($method, $apiKey, $apiSecret) {
-    <span style="color:#75715e">//ws签名时参数值设为空字符串
-</span><span style="color:#75715e"></span>    $requestPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>; 
-    $body <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
-
-    $timestamp <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTimestamp</span>();
-
-    $sign <span style="color:#f92672">=</span> <span style="color:#a6e22e">signature</span>($timestamp, $method, $requestPath, $body, $apiSecret);
-    
-    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">json_encode</span>([
-        <span style="color:#e6db74">&#34;access_key&#34;</span> <span style="color:#f92672">=&gt;</span> $apiKey,
-        <span style="color:#e6db74">&#34;signature&#34;</span> <span style="color:#f92672">=&gt;</span> $sign,
-        <span style="color:#e6db74">&#34;timestamp&#34;</span> <span style="color:#f92672">=&gt;</span> $timestamp
-    ], <span style="color:#a6e22e">JSON_UNESCAPED_SLASHES</span>);
-}
-
- <span style="color:#75715e">// Unix时间戳格式，精确到毫秒
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getTimestamp</span>() {
-     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">intval</span>(<span style="color:#a6e22e">microtime</span>(<span style="color:#66d9ef">true</span>)<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span>);
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">signature</span>($timestamp, $method, $requestPath, $body, $secretKey) {
-    $message <span style="color:#f92672">=</span> (<span style="color:#a6e22e">string</span>) $timestamp <span style="color:#f92672">.</span> <span style="color:#a6e22e">strtoupper</span>($method) <span style="color:#f92672">.</span> $requestPath <span style="color:#f92672">.</span> (<span style="color:#a6e22e">string</span>) $body;
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">base64_encode</span>(<span style="color:#a6e22e">hash_hmac</span>(<span style="color:#e6db74">&#39;sha256&#39;</span>, $message, $secretKey, <span style="color:#66d9ef">true</span>));
-}
-</code></pre></div>
     
         <h1 id="symbol">市场交易对</h1>
 <h2 id="spot_symbol">1. 现货交易对</h2>
 <p>请求方式: <code>GET</code><br>
 请求地址: <code>/pub/openapi/v1/symbol/spot/all</code><br>
 登录授权: <code>否</code></p>
-<p>请求参数:</p>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>字段类型</th>
-<th>是否必须</th>
-<th>中文说明</th>
-<th>默认值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>with_id</td>
-<td>int</td>
-<td>false</td>
-<td>返回交易对id(内部使用)</td>
-<td><code>1</code>: 返回id参数</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>请求参数: 无</p>
 <p>返回结果:</p>
 <table>
 <thead>
@@ -515,29 +462,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <p>请求方式: <code>GET</code><br>
 请求地址: <code>/pub/openapi/v1/symbol/index/all</code><br>
 登录授权: <code>否</code></p>
-<p>请求参数:</p>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>字段类型</th>
-<th>是否必须</th>
-<th>中文说明</th>
-<th>默认值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>with_id</td>
-<td>int</td>
-<td>false</td>
-<td>返回交易对id(内部使用)</td>
-<td><code>1</code>: 返回id参数</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>请求参数: 无</p>
 <p>返回结果:</p>
 <table>
 <thead>
@@ -599,29 +524,7 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <p>请求方式: <code>GET</code><br>
 请求地址: <code>/pub/openapi/v1/symbol/options/all</code><br>
 登录授权: <code>否</code></p>
-<p>请求参数:</p>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>字段类型</th>
-<th>是否必须</th>
-<th>中文说明</th>
-<th>默认值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>with_id</td>
-<td>int</td>
-<td>false</td>
-<td>返回交易对id(内部使用)</td>
-<td><code>1</code>: 返回id参数</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>请求参数: 无</p>
 <p>返回结果:</p>
 <table>
 <thead>

@@ -19,9 +19,9 @@
  Rest API  当访问超过频率限制时，将返回429状态：请求太频繁。
 1.1 Rest API 如果传入有效的APIKey 用用户ID限速；如果没有则拿公网IP限速。
 限速规则：各个接口上有单独的说明，如果没有一般接口限速为 5次/秒。
-2. 验证 本章节主要为验证的细节分以下五个方面：
- 生成APIKey 发起请求 签名 时间戳 获取服务器时间  2.1 生成APIKey 在对任何请求进行签名之前，您必须通过BITWELL网站创建一个APIKey。创建APIKey后，您将获得2个必须记住的信息：
- APIKey SecretKey  APIKey和SecretKey将由BITWELL生成和提供。
+2. 验证 本章节主要为验证的细节分以下4个方面：
+ 生成APIKey 发起请求 签名 时间戳  2.1 生成APIKey 在对任何请求进行签名之前，您必须通过BitWell网站创建一个APIKey。创建APIKey后，您将获得2个必须记住的信息：
+ APIKey SecretKey  APIKey和SecretKey将由BitWell生成和提供。
 2.2 发起请求 所有REST请求头都必须包含如下KEY：
  BW-ACCESS-KEY: 字符串类型的APIKey。 BW-ACCESS-SIGN: 使用Base64编码签名(请参阅签名)。 BW-ACCESS-TIMESTAMP: 发起请求的时间戳。  FT-language 语言(可选)，支持以下三种，默认 &amp;ldquo;en-US&amp;rdquo;
  简体中文 zh-CN 繁体中文 zh-HK 英文 en-US  所有请求都应该含有application/json类型内容，并且是有效的JSON。
@@ -37,8 +37,8 @@
       <description>市场交易对 1. 现货交易对 请求方式: GET
 请求地址: /pub/openapi/v1/symbol/spot/all
 登录授权: 否
-请求参数:
-   字段名 字段类型 是否必须 中文说明 默认值 备注     with_id int false 返回交易对id(内部使用) 1: 返回id参数     返回结果:
+请求参数: 无
+返回结果:
    字段名 字段类型 备注     base_asset string 基础资产code   quote_asset string 交易资产code   symbol string 交易对code   price_precision int 价格精度   volume_precision int 数量精度    { &amp;#34;data&amp;#34;: [ { &amp;#34;base_asset&amp;#34;: &amp;#34;USDT&amp;#34;, &amp;#34;quote_asset&amp;#34;: &amp;#34;BTC&amp;#34;, &amp;#34;symbol&amp;#34;: &amp;#34;BTC_USDT&amp;#34;, &amp;#34;price_precision&amp;#34;: 2, &amp;#34;volume_precision&amp;#34;: 4 }, { &amp;#34;base_asset&amp;#34;: &amp;#34;USDT&amp;#34;, &amp;#34;symbol&amp;#34;: &amp;#34;ETH_USDT&amp;#34;, &amp;#34;price_precision&amp;#34;: 2, &amp;#34;quote_asset&amp;#34;: &amp;#34;ETH&amp;#34;, &amp;#34;volume_precision&amp;#34;: 4 } ], &amp;#34;errmsg&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;: 0 } 2.</description>
     </item>
     
