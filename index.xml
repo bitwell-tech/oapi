@@ -19,6 +19,7 @@
  Rest API  当访问超过频率限制时，将返回429状态：请求太频繁。
 1.1 Rest API 如果传入有效的APIKey 用用户ID限速；如果没有则拿公网IP限速。
 限速规则：各个接口上有单独的说明，如果没有一般接口限速为 5次/秒。
+1.2 WebSocket WebSocket将每个命令类型限制为每秒50条命令
 2. 验证 本章节主要为验证的细节分以下4个方面：
  生成APIKey 发起请求 签名 时间戳  2.1 生成APIKey 在对任何请求进行签名之前，您必须通过BitWell网站创建一个APIKey。创建APIKey后，您将获得2个必须记住的信息：
  APIKey SecretKey  APIKey和SecretKey将由BitWell生成和提供。

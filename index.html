@@ -254,6 +254,8 @@
 <h3 id="11-rest-api">1.1 Rest API</h3>
 <p>如果传入有效的APIKey 用用户ID限速；如果没有则拿公网IP限速。</p>
 <p>限速规则：各个接口上有单独的说明，如果没有一般接口限速为 5次/秒。</p>
+<h3 id="12-websocket">1.2 WebSocket</h3>
+<p>WebSocket将每个命令类型限制为每秒50条命令</p>
 <h2 id="verification">2. 验证</h2>
 <p>本章节主要为验证的细节分以下4个方面：</p>
 <ul>
@@ -317,13 +319,13 @@
 <td>Request Body</td>
 <td>请求主体的字符串</td>
 <td>1) 若请求没有主体(通常为GET请求), 则省略<br>2) 值与请求一致</td>
-<td>{&ldquo;product_id&rdquo;:&ldquo;BTC-USD-0309&rdquo;,&ldquo;order_id&rdquo;:&ldquo;377454671037440&rdquo;}</td>
+<td>{&ldquo;symbol&rdquo;:&ldquo;BTC_USDT&rdquo;,&ldquo;order_id&rdquo;:&ldquo;1010000867765&rdquo;}</td>
 </tr>
 <tr>
 <td>SecretKey</td>
 <td>私钥</td>
-<td>BW个人中心申请所生成</td>
-<td>22582BD0CFF14C41EDBF1AB98506286D</td>
+<td>BitWell个人中心申请所生成</td>
+<td>DtUTxNBkTUKr4N9hwaYmDSRgxyIDD0Za</td>
 </tr>
 </tbody>
 </table>
