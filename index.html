@@ -242,8 +242,9 @@
     
         <h1 id="api_overview">API概述</h1>
 <h2 id="domain_name">0. 域名</h2>
-<p>测试域名:</p>
-<p>线上域名: <a href="https://openapi.bitwellex.com">https://openapi.bitwellex.com</a></p>
+<p>线上域名: <a href="https://openapi.bitwellex.com">https://openapi.bitwellex.com</a>, <a href="https://openapi.bitwellex.co">https://openapi.bitwellex.co</a></p>
+<p>您可以自行比较使用openapi.bitwellex.com和openapi.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。</p>
+<p>其中，openapi.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。</p>
 <h2 id="restricting_access">1. 访问限制</h2>
 <p>本章节访问限制的细节：</p>
 <ul>
@@ -4940,7 +4941,10 @@ $apiSecret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
         <h1 id="hq_ws">WS行情API</h1>
 <h2 id="hq_ws_explain">WS说明</h2>
 <h3 id="heading">接口地址</h3>
-<p>wss://ws.siyecaosoft.com/v2</p>
+<p>wss://openws.bitwellex.com/v2</p>
+<p>wss://openws.bitwellex.co/v2</p>
+<p>您可以自行比较使用openws.bitwellex.com和openws.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。</p>
+<p>其中，openws.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。</p>
 <h3 id="qa">QA</h3>
 <p>QA1:</p>
 <blockquote>
@@ -5293,15 +5297,15 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </table>
 <h2 id="hq_ws_data_options">期权信息数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;theory_price&#34;</span>:<span style="color:#ae81ff">35.95</span>, <span style="color:#960050;background-color:#1e0010">#理论价格</span>
+    <span style="color:#f92672">&#34;theory_price&#34;</span>:<span style="color:#ae81ff">35.95</span>,
     <span style="color:#f92672">&#34;delta&#34;</span>:<span style="color:#ae81ff">0.5389</span>,
     <span style="color:#f92672">&#34;gamma&#34;</span>:<span style="color:#ae81ff">0.0047</span>,
     <span style="color:#f92672">&#34;theta&#34;</span>:<span style="color:#ae81ff">-3.5326</span>,
     <span style="color:#f92672">&#34;vega&#34;</span>:<span style="color:#ae81ff">41.3693</span>,
-    <span style="color:#f92672">&#34;leverage&#34;</span>:<span style="color:#ae81ff">12.5184</span>, <span style="color:#960050;background-color:#1e0010">#杠杆率</span>
-    <span style="color:#f92672">&#34;iv&#34;</span>:<span style="color:#ae81ff">0</span>, <span style="color:#960050;background-color:#1e0010">#隐含波动率</span>
-    <span style="color:#f92672">&#34;open_positions&#34;</span>:<span style="color:#ae81ff">0</span> <span style="color:#960050;background-color:#1e0010">#未平持仓数</span>
-    <span style="color:#e6db74">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
+    <span style="color:#f92672">&#34;leverage&#34;</span>:<span style="color:#ae81ff">12.5184</span>,
+    <span style="color:#f92672">&#34;iv&#34;</span>:<span style="color:#ae81ff">0</span>,
+    <span style="color:#f92672">&#34;open_positions&#34;</span>:<span style="color:#ae81ff">0</span>,
+    <span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
     <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;option&#34;</span>
 }
 

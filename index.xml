@@ -12,8 +12,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bitwell-tech.github.io/oapi/1.overview/</guid>
-      <description>API概述 0. 域名 测试域名:
-线上域名: https://openapi.bitwellex.com
+      <description>API概述 0. 域名 线上域名: https://openapi.bitwellex.com, https://openapi.bitwellex.co
+您可以自行比较使用openapi.bitwellex.com和openapi.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
+其中，openapi.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
 1. 访问限制 本章节访问限制的细节：
  Rest API  当访问超过频率限制时，将返回429状态：请求太频繁。
 1.1 Rest API 如果传入有效的APIKey 用用户ID限速；如果没有则拿公网IP限速。
@@ -112,7 +113,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bitwell-tech.github.io/oapi/7.hq_ws/</guid>
-      <description>WS行情API WS说明 接口地址 wss://ws.siyecaosoft.com/v2
+      <description>WS行情API WS说明 接口地址 wss://openws.bitwellex.com/v2
+wss://openws.bitwellex.co/v2
+您可以自行比较使用openws.bitwellex.com和openws.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
+其中，openws.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
 QA QA1:
  Q: ws的kline时间 和 kline接口返回历史数据里 date字段的值 单位不太一样 A: ws的单位是: us , 然后api的单位是: s
  QA2:
@@ -125,8 +129,7 @@ A: 对, 需要客户端unsub掉历史的, 防止ws泄露(例如用户点击了4�
 ping text 由于服务器和客户端维护ws有心跳时间, 如果60s内无心跳,或者无数据通讯, 有可能会造成服务端或者客户端主动断开连接, 所以服务端提供ping text消息, 请在60s返回内定期发送ping text
 格式: 客户端发送消息: ping 服务端回应: success
 如果服务端未回复,有可能是服务端已经主动断开了连接, 请重连
-鉴权 鉴权发生在建立连接之后, 客户端主动发送text消息, 消息格式如下:
-{ &amp;#34;action&amp;#34;:&amp;#34;auth&amp;#34;, &amp;#34;type&amp;#34;:&amp;#34;openapi&amp;#34;, &amp;#34;access_key&amp;#34;: &amp;#34;W2zxxxxND1Wxxxxtdt9gxxxxJFtxxxxQ&amp;#34;, &amp;#34;signature&amp;#34;: &amp;#34;4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o=&amp;#34;, &amp;#34;timestamp&amp;#34;: &amp;#34;1420674445201&amp;#34; } 鉴权成功后服务端会返回鉴权结果:</description>
+鉴权 鉴权发生在建立连接之后, 客户端主动发送text消息, 消息格式如下:</description>
     </item>
     
   </channel>
