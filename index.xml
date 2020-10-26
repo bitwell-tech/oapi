@@ -109,12 +109,12 @@
     </item>
     
     <item>
-      <title>WS行情API</title>
+      <title>行情WS</title>
       <link>https://bitwell-tech.github.io/oapi/7.hq_ws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bitwell-tech.github.io/oapi/7.hq_ws/</guid>
-      <description>WS行情API WS说明 接口地址 wss://openws.bitwellex.com/v2
+      <description>行情WS WS说明 接口地址 wss://openws.bitwellex.com/v2
 wss://openws.bitwellex.co/v2
 您可以自行比较使用openws.bitwellex.com和openws.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
 其中，openws.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
