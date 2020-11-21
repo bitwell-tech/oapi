@@ -114,7 +114,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bitwell-tech.github.io/oapi/7.hq_ws/</guid>
-      <description>行情WS WS说明 接口地址 wss://openws.bitwellex.com/v2
+      <description>行情WS 1. WS说明 接口地址 wss://openws.bitwellex.com/v2
 wss://openws.bitwellex.co/v2
 您可以自行比较使用openws.bitwellex.com和openws.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
 其中，openws.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
@@ -130,7 +130,7 @@ A: 对, 需要客户端unsub掉历史的, 防止ws泄露(例如用户点击了4�
 ping text 由于服务器和客户端维护ws有心跳时间, 如果60s内无心跳,或者无数据通讯, 有可能会造成服务端或者客户端主动断开连接, 所以服务端提供ping text消息, 请在60s返回内定期发送ping text
 格式: 客户端发送消息: ping 服务端回应: success
 如果服务端未回复,有可能是服务端已经主动断开了连接, 请重连
-鉴权 鉴权发生在建立连接之后, 客户端主动发送text消息, 消息格式如下:</description>
+2. 鉴权 鉴权发生在建立连接之后, 客户端主动发送text消息, 消息格式如下:</description>
     </item>
     
   </channel>

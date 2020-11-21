@@ -202,23 +202,23 @@
                 
                     <ul class="toc-list-h2">
                         
-                            <li><a href="#hq_ws_explain" class="toc-h2 toc-link" data-title="WS说明">WS说明</a></li>
+                            <li><a href="#hq_ws_explain" class="toc-h2 toc-link" data-title="1. WS说明">1. WS说明</a></li>
                         
-                            <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="鉴权">鉴权</a></li>
+                            <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="2. 鉴权">2. 鉴权</a></li>
                         
-                            <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="订阅数据方式">订阅数据方式</a></li>
+                            <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="3. 订阅数据方式">3. 订阅数据方式</a></li>
                         
-                            <li><a href="#hq_ws_data_index" class="toc-h2 toc-link" data-title="数据索引">数据索引</a></li>
+                            <li><a href="#hq_ws_data_index" class="toc-h2 toc-link" data-title="4. 数据索引">4. 数据索引</a></li>
                         
-                            <li><a href="#hq_ws_data_offer" class="toc-h2 toc-link" data-title="报价数据">报价数据</a></li>
+                            <li><a href="#hq_ws_data_offer" class="toc-h2 toc-link" data-title="5. 报价数据">5. 报价数据</a></li>
                         
-                            <li><a href="#hq_ws_data_kline" class="toc-h2 toc-link" data-title="K线数据">K线数据</a></li>
+                            <li><a href="#hq_ws_data_kline" class="toc-h2 toc-link" data-title="6. K线数据">6. K线数据</a></li>
                         
-                            <li><a href="#hq_ws_data_tick" class="toc-h2 toc-link" data-title="逐笔数据">逐笔数据</a></li>
+                            <li><a href="#hq_ws_data_tick" class="toc-h2 toc-link" data-title="7. 逐笔数据">7. 逐笔数据</a></li>
                         
-                            <li><a href="#hq_ws_data_handicap" class="toc-h2 toc-link" data-title="盘口数据">盘口数据</a></li>
+                            <li><a href="#hq_ws_data_handicap" class="toc-h2 toc-link" data-title="8. 盘口数据">8. 盘口数据</a></li>
                         
-                            <li><a href="#hq_ws_data_options" class="toc-h2 toc-link" data-title="期权信息数据">期权信息数据</a></li>
+                            <li><a href="#hq_ws_data_options" class="toc-h2 toc-link" data-title="9. 期权信息数据">9. 期权信息数据</a></li>
                         
                     </ul>
                 
@@ -4832,7 +4832,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 
     
         <h1 id="hq_ws">行情WS</h1>
-<h2 id="hq_ws_explain">WS说明</h2>
+<h2 id="hq_ws_explain">1. WS说明</h2>
 <h3 id="heading">接口地址</h3>
 <p>wss://openws.bitwellex.com/v2</p>
 <p>wss://openws.bitwellex.co/v2</p>
@@ -4862,7 +4862,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 客户端发送消息: <code>ping</code>
 服务端回应: <code>success</code></p>
 <p>如果服务端未回复,有可能是服务端已经主动断开了连接, 请重连</p>
-<h2 id="hq_ws_auth">鉴权</h2>
+<h2 id="hq_ws_auth">2. 鉴权</h2>
 <p>鉴权发生在建立连接之后, 客户端主动发送text消息, 消息格式如下:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;auth&#34;</span>,
@@ -4878,7 +4878,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <li>如果errno不为0, 则说明鉴权失败,失败具体信息参考errmsg</li>
 <li>鉴权逻辑参考 api概述</li>
 </ol>
-<h2 id="hq_ws_auth">订阅数据方式</h2>
+<h2 id="hq_ws_auth">3. 订阅数据方式</h2>
 <p>订阅消息需要客户端发送msg(json格式), symbol是交易对数组,所以支持批量和单个订阅</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;sub&#34;</span>,
@@ -4888,8 +4888,8 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </code></pre></div><p>字段说明:</p>
 <p>action: sub订阅，unsub取消订阅</p>
 <p>symbol: 交易对数组,支持批量和单个订阅</p>
-<h2 id="hq_ws_data_index">数据索引</h2>
-<h3 id="-symbolbtc_usdt-type">行情数据, symbol是具体的交易对(例如:BTC_USDT), type有如下枚举值:</h3>
+<h2 id="hq_ws_data_index">4. 数据索引</h2>
+<p>行情数据, symbol是具体的交易对(例如:BTC_USDT), type有如下枚举值:</p>
 <ul>
 <li>quote 报价</li>
 <li>transaction 逐笔交易</li>
@@ -4902,15 +4902,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <li>kline-60min  一小时 kline数据</li>
 <li>kline-1day  一天 kline数据</li>
 </ul>
-<h3 id="-symboluser_ordertype">用户订单, symbol是USER_ORDER,type有如下枚举值:</h3>
-<ul>
-<li>state_change 订单状态变更</li>
-</ul>
-<h3 id="-symboluser_option">用户期权, symbol是USER_OPTION</h3>
-<ul>
-<li>pos_change 持仓数量变更</li>
-</ul>
-<h2 id="hq_ws_data_offer">报价数据</h2>
+<h2 id="hq_ws_data_offer">5. 报价数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
 <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-P&#34;</span>,
 <span style="color:#f92672">&#34;trade&#34;</span>:<span style="color:#ae81ff">34.33</span>,
@@ -4980,7 +4972,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </tr>
 </tbody>
 </table>
-<h2 id="hq_ws_data_kline">K线数据</h2>
+<h2 id="hq_ws_data_kline">6. K线数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"> {
     <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
     <span style="color:#f92672">&#34;open&#34;</span>:<span style="color:#ae81ff">1.0</span>,
@@ -5030,7 +5022,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </tr>
 </tbody>
 </table>
-<h2 id="hq_ws_data_tick">逐笔数据</h2>
+<h2 id="hq_ws_data_tick">7. 逐笔数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
     {
     <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
@@ -5097,7 +5089,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </tr>
 </tbody>
 </table>
-<h2 id="hq_ws_data_handicap">盘口数据</h2>
+<h2 id="hq_ws_data_handicap">8. 盘口数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;bid&#34;</span>:{
         <span style="color:#f92672">&#34;38.76&#34;</span>:<span style="color:#ae81ff">1</span>,
@@ -5163,7 +5155,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </tr>
 </tbody>
 </table>
-<h2 id="hq_ws_data_options">期权信息数据</h2>
+<h2 id="hq_ws_data_options">9. 期权信息数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;theory_price&#34;</span>:<span style="color:#ae81ff">35.95</span>,
     <span style="color:#f92672">&#34;delta&#34;</span>:<span style="color:#ae81ff">0.5389</span>,
