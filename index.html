@@ -315,7 +315,7 @@
 <td>Request Body</td>
 <td>请求主体的字符串</td>
 <td>1) 若请求没有主体(通常为GET请求), 则省略<br>2) 值与请求一致</td>
-<td>{&ldquo;symbol&rdquo;:&ldquo;BTC_USDT&rdquo;,&ldquo;order_id&rdquo;:&ldquo;1010000867765&rdquo;}</td>
+<td>{&ldquo;symbol&rdquo;:&ldquo;BTC_USDT&rdquo;,&ldquo;order_id&rdquo;:1010000867765}</td>
 </tr>
 <tr>
 <td>SecretKey</td>
@@ -1602,7 +1602,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -1614,7 +1614,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
-        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1010000867765&#34;</span>,
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1010000867765</span>,
         <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
     },
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
@@ -1805,7 +1805,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -1830,13 +1830,13 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
         <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
             {
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1010000868734&#34;</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868734</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
             },
             {
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;c111111a11112&#34;</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;Invalid remain type&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">11010101</span>
             }
@@ -1851,7 +1851,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 请求授权: <code>是</code></p>
 <p>请求参数:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
-    <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1010000869102&#34;</span>
+    <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000869102</span>
 }
 </code></pre></div><table>
 <thead>
@@ -1867,7 +1867,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>true</td>
 <td>订单id</td>
 <td>NA</td>
@@ -1878,7 +1878,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <p>响应数据:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
-        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1010000866876&#34;</span>,
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1010000866876</span>,
         <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
     },
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
@@ -1895,8 +1895,8 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
 {
 	<span style="color:#e6db74">&#34;order_ids&#34;</span><span style="color:#f92672">:</span> [
-		<span style="color:#e6db74">&#34;1010000869123&#34;</span>,
-		<span style="color:#e6db74">&#34;1010000869124&#34;</span>
+		<span style="color:#ae81ff">1010000869123</span>,
+		<span style="color:#ae81ff">1010000869124</span>
 	]
 }
 </code></pre></div><table>
@@ -1913,7 +1913,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_ids</td>
-<td>string[]</td>
+<td>int64[]</td>
 <td>true</td>
 <td>订单id</td>
 <td>NA</td>
@@ -1957,7 +1957,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -1981,7 +1981,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -2008,7 +2008,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;委托单已处理，无法撤单&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">11010202</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1010000868741&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868741</span>
             }
         ],
         <span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">:</span> [
@@ -2016,13 +2016,13 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111111&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1010000868744&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868744</span>
             },
             {
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111112&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1010000868745&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868745</span>
             }
         ]
     },
@@ -2048,7 +2048,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>true</td>
 <td>订单id</td>
 <td>NA</td>
@@ -2081,7 +2081,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单ID</td>
 </tr>
 <tr>
@@ -2213,7 +2213,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
         <span style="color:#e6db74">&#34;order_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1601283710</span>,
-        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;10100002577892&#34;</span>,
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10100002577892</span>,
         <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test00001&#34;</span>,
         <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
         <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy&#34;</span>,
@@ -2377,7 +2377,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单ID</td>
 </tr>
 <tr>
@@ -2457,7 +2457,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
         <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
             {
                 <span style="color:#e6db74">&#34;order_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1601283710</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;10100002577892&#34;</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10100002577892</span>,
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test00001&#34;</span>,
                 <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
                 <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy&#34;</span>,
@@ -2513,7 +2513,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>false</td>
 <td>订单id</td>
 <td>NA</td>
@@ -2853,7 +2853,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -2865,7 +2865,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
-        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1020000867765&#34;</span>,
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1020000867765</span>,
         <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
     },
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
@@ -3085,7 +3085,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -3112,31 +3112,31 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test2111111111114&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1020000869145&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1020000869145</span>
             },
             {
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test2111111111115&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1020000869146&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1020000869146</span>
             },
             {
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test2111111111116&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1020000869147&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1020000869147</span>
             },
             {
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test2111111111117&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1020000869148&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1020000869148</span>
             },
             {
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test2111111111118&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;期权未平合约数不足&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">11020501</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
             }
         ]
     },
@@ -3149,7 +3149,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 请求授权: <code>是</code></p>
 <p>请求参数:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
-    <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;1020000869150&#34;</span>
+    <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1020000869150</span>
 }
 </code></pre></div><table>
 <thead>
@@ -3165,7 +3165,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>true</td>
 <td>订单id</td>
 <td>NA</td>
@@ -3176,7 +3176,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <p>响应数据:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
-        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1010000866876&#34;</span>,
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1010000866876</span>,
         <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
     },
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
@@ -3193,8 +3193,8 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
 {
 	<span style="color:#e6db74">&#34;order_ids&#34;</span><span style="color:#f92672">:</span> [
-		<span style="color:#e6db74">&#34;1020000869143&#34;</span>,
-		<span style="color:#e6db74">&#34;1020000869144&#34;</span>
+		<span style="color:#ae81ff">1020000869143</span>,
+		<span style="color:#ae81ff">1020000869144</span>
 	]
 }
 </code></pre></div><table>
@@ -3211,7 +3211,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_ids</td>
-<td>string[]</td>
+<td>int64[]</td>
 <td>true</td>
 <td>订单id</td>
 <td>NA</td>
@@ -3255,7 +3255,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -3279,7 +3279,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单编号</td>
 </tr>
 <tr>
@@ -3306,7 +3306,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;订单未触发，禁止撤单&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">11010203</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1020000869144&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1020000869144</span>
             }
         ],
         <span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">:</span> [
@@ -3314,7 +3314,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1020000869143&#34;</span>
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1020000869143</span>
             }
         ]
     },
@@ -3340,7 +3340,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>true</td>
 <td>订单id</td>
 <td>NA</td>
@@ -3373,7 +3373,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单ID</td>
 </tr>
 <tr>
@@ -3515,7 +3515,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
     <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
         <span style="color:#e6db74">&#34;order_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1602315076</span>,
-        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;10200002605606&#34;</span>,
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10200002605606</span>,
         <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
         <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC-20201016-7500-C&#34;</span>,
         <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sell&#34;</span>,
@@ -3681,7 +3681,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>订单ID</td>
 </tr>
 <tr>
@@ -3761,7 +3761,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
         <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
             {
                 <span style="color:#e6db74">&#34;order_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1602315076</span>,
-                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;10200002605606&#34;</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10200002605606</span>,
                 <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
                 <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC-20201016-7500-C&#34;</span>,
                 <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sell&#34;</span>,
@@ -3817,7 +3817,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tbody>
 <tr>
 <td>order_id</td>
-<td>string</td>
+<td>int64</td>
 <td>true</td>
 <td>订单id</td>
 <td>NA</td>
