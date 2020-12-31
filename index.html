@@ -2054,14 +2054,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>NA</td>
 <td></td>
 </tr>
-<tr>
-<td>with_match</td>
-<td>int</td>
-<td>false</td>
-<td>是否需要成交记录</td>
-<td>0</td>
-<td>1: 需要, 0: 不需要</td>
-</tr>
 </tbody>
 </table>
 <p>响应数据:</p>
@@ -2154,60 +2146,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>string</td>
 <td>触发价格</td>
 </tr>
-<tr>
-<td>matches</td>
-<td>array</td>
-<td>成交明细</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>返回参数 <code>matches</code></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>字段类型</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>match_time</td>
-<td>int</td>
-<td>成交时间(时间戳)</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>string</td>
-<td>买卖方向, <code>buy</code>:买, <code>sell</code>:卖</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>成交价格</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>string</td>
-<td>成交数量</td>
-</tr>
-<tr>
-<td>fee_asset</td>
-<td>string</td>
-<td>手续费资产</td>
-</tr>
-<tr>
-<td>fee_volume</td>
-<td>string</td>
-<td>手续费</td>
-</tr>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>交易对</td>
-</tr>
 </tbody>
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
@@ -2227,17 +2165,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
         <span style="color:#e6db74">&#34;state&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,
         <span style="color:#e6db74">&#34;tri_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
         <span style="color:#e6db74">&#34;tri_direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
-        <span style="color:#e6db74">&#34;matches&#34;</span><span style="color:#f92672">:</span> [
-            {
-                <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy&#34;</span>,
-                <span style="color:#e6db74">&#34;fee_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC&#34;</span>,
-                <span style="color:#e6db74">&#34;fee_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.0000025&#34;</span>,
-                <span style="color:#e6db74">&#34;match_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1601291995</span>,
-                <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7000&#34;</span>,
-                <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
-                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.001&#34;</span>
-            }
-        ],
         <span style="color:#e6db74">&#34;remain_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;limit&#34;</span>
     },
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
@@ -3346,14 +3273,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>NA</td>
 <td></td>
 </tr>
-<tr>
-<td>with_match</td>
-<td>int</td>
-<td>false</td>
-<td>是否需要成交记录</td>
-<td>0</td>
-<td>1: 需要, 0: 不需要</td>
-</tr>
 </tbody>
 </table>
 <p>响应数据:</p>
@@ -3446,70 +3365,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>int</td>
 <td>委托单状态, <code>0</code>. 待处理, <code>1</code>. 挂单中, <code>2</code>. 撤单中,  <code>3</code>. 已撤单, <code>4</code>. 部分成交, <code>5</code>. 已完成, <code>6</code>. 错误, <code>7</code>. 等待触发, <code>8</code>. 已触发, <code>9</code>. 触价失效</td>
 </tr>
-<tr>
-<td>matches</td>
-<td>array</td>
-<td>成交明细</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>返回参数 <code>matches</code></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>字段类型</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>match_time</td>
-<td>int</td>
-<td>成交时间</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>string</td>
-<td>买卖方向, <code>buy</code>:买, <code>sell</code>:卖</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>成交价格</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>string</td>
-<td>成交数量</td>
-</tr>
-<tr>
-<td>fee_asset</td>
-<td>string</td>
-<td>手续费资产</td>
-</tr>
-<tr>
-<td>fee_volume</td>
-<td>string</td>
-<td>手续费</td>
-</tr>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>交易对</td>
-</tr>
-<tr>
-<td>offset</td>
-<td>string</td>
-<td>开仓/平仓, <code>open</code>: 开仓, <code>close</code>: 平仓</td>
-</tr>
-<tr>
-<td>open_mode</td>
-<td>string</td>
-<td>开仓模式, <code>buy</code>: 买入开仓,<br> <code>covered_sell</code>：备兑卖出开仓,<br> <code>margin_sell</code>：保证金卖出开仓</td>
-</tr>
 </tbody>
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
@@ -3529,19 +3384,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
         <span style="color:#e6db74">&#34;queue_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;301&#34;</span>,
         <span style="color:#e6db74">&#34;queue_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
         <span style="color:#e6db74">&#34;state&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,
-        <span style="color:#e6db74">&#34;matches&#34;</span><span style="color:#f92672">:</span> [
-            {
-                <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sell&#34;</span>,
-                <span style="color:#e6db74">&#34;fee_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
-                <span style="color:#e6db74">&#34;fee_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.05&#34;</span>,
-                <span style="color:#e6db74">&#34;match_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1602316371</span>,
-                <span style="color:#e6db74">&#34;offset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;open&#34;</span>,
-                <span style="color:#e6db74">&#34;open_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;margin_sell&#34;</span>,
-                <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;301&#34;</span>,
-                <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC-20201016-7500-C&#34;</span>,
-                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1&#34;</span>
-            }
-        ],
         <span style="color:#e6db74">&#34;remain_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;limit&#34;</span>
     },
     <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
