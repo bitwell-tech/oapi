@@ -68,7 +68,6 @@
       <guid>https://bitwell-tech.github.io/oapi/4.spot_order/</guid>
       <description>现货API 输出结构如下
    字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
-另外，分页返回的 page 字段中，total为数据总条数（非总页数）。
 1. 下单 请求方式: POST
 请求地址: /openapi/v1/spot/order/place
 请求授权: 是
