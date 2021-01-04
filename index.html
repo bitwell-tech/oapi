@@ -206,7 +206,7 @@
                         
                             <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="2. 鉴权">2. 鉴权</a></li>
                         
-                            <li><a href="#hq_ws_auth" class="toc-h2 toc-link" data-title="3. 订阅数据方式">3. 订阅数据方式</a></li>
+                            <li><a href="#hq_ws_sub" class="toc-h2 toc-link" data-title="3. 订阅数据方式">3. 订阅数据方式</a></li>
                         
                             <li><a href="#hq_ws_data_index" class="toc-h2 toc-link" data-title="4. 数据索引">4. 数据索引</a></li>
                         
@@ -219,6 +219,21 @@
                             <li><a href="#hq_ws_data_handicap" class="toc-h2 toc-link" data-title="8. 盘口数据">8. 盘口数据</a></li>
                         
                             <li><a href="#hq_ws_data_options" class="toc-h2 toc-link" data-title="9. 期权信息数据">9. 期权信息数据</a></li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="#user_ws" class="toc-h1 toc-link" data-title="用户相关WS">用户相关WS</a>
+                
+                    <ul class="toc-list-h2">
+                        
+                            <li><a href="#1-" class="toc-h2 toc-link" data-title="1. 概述">1. 概述</a></li>
+                        
+                            <li><a href="#user_ws_order" class="toc-h2 toc-link" data-title="2. 用户订单">2. 用户订单</a></li>
+                        
+                            <li><a href="#user_ws_option" class="toc-h2 toc-link" data-title="3. 用户期权 ">3. 用户期权 </a></li>
                         
                     </ul>
                 
@@ -4534,7 +4549,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <li>如果errno不为0, 则说明鉴权失败,失败具体信息参考errmsg</li>
 <li>鉴权逻辑参考 api概述</li>
 </ol>
-<h2 id="hq_ws_auth">3. 订阅数据方式</h2>
+<h2 id="hq_ws_sub">3. 订阅数据方式</h2>
 <p>订阅消息需要客户端发送msg(json格式), symbol是交易对数组,所以支持批量和单个订阅</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;sub&#34;</span>,
@@ -4873,6 +4888,65 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <tr>
 <td>subtype</td>
 <td>订阅的type</td>
+</tr>
+</tbody>
+</table>
+
+    
+        <h1 id="user_ws">用户相关WS</h1>
+<h2 id="1-">1. 概述</h2>
+<p>授权/数据格式同 <code>行情ws</code> 相关约定</p>
+<h2 id="user_ws_order">2. 用户订单</h2>
+<h3 id="heading">订阅格式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sub&#34;</span>,
+    <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span>[<span style="color:#e6db74">&#34;USER_ORDER&#34;</span>],
+    <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;state_change&#34;</span> <span style="color:#75715e"># 订单变更
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="heading-1">响应数据</h3>
+<p>同订单列表数据格式</p>
+<h2 id="user_ws_option">3. 用户期权 </h2>
+<h3 id="heading-2">订阅格式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sub&#34;</span>,
+    <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span>[<span style="color:#e6db74">&#34;USER_OPTION&#34;</span>],
+    <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pos_change&#34;</span> <span style="color:#75715e"># 持仓变更
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="heading-3">响应数据</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+	<span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC-20201016-7500-C&#34;</span>
+	<span style="color:#e6db74">&#34;open_mode&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy&#34;</span>,
+	<span style="color:#e6db74">&#34;open_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+	<span style="color:#e6db74">&#34;frozen_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>交易对code</td>
+</tr>
+<tr>
+<td>open_mode</td>
+<td>string</td>
+<td>开仓方式， buy: 开仓买入， margin_sell:保证金卖出，covered_sell:备兑卖出</td>
+</tr>
+<tr>
+<td>open_volume</td>
+<td>int</td>
+<td>开仓数量</td>
+</tr>
+<tr>
+<td>frozen_volume</td>
+<td>int</td>
+<td>冻结数量</td>
 </tr>
 </tbody>
 </table>
