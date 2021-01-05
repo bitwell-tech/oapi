@@ -405,7 +405,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <h3 id="24-">2.4 时间戳</h3>
 <p>BW-ACCESS-TIMESTAMP请求头必须是Unix时间戳格式（如：1420674445201），精确到毫秒</p>
 <h3 id="25-websocket-">2.5 Websocket 签名</h3>
-<p>注意：Websocket 签名时 <code>Request Path</code> 和 <code>Request Body</code> 设为空字符串</p>
+<p>注意：Websocket 签名时 <code>Request Method</code> 设为 <code>POST</code>, <code>Request Path</code> 和 <code>Request Body</code> 设为空字符串</p>
 
     
         <h1 id="symbol">市场交易对</h1>
@@ -4543,11 +4543,18 @@ A: ws的单位是: us , 然后api的单位是: s</p>
     <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;1420674445201&#34;</span>
 }
 </code></pre></div><p>鉴权成功后服务端会返回鉴权结果:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;auth&#34;</span>,<span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;openapi&#34;</span>,<span style="color:#f92672">&#34;errmsg&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#f92672">&#34;errno&#34;</span>:<span style="color:#ae81ff">0</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1602583578</span>}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;auth&#34;</span>,
+    <span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;openapi&#34;</span>,
+    <span style="color:#f92672">&#34;errmsg&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#f92672">&#34;errno&#34;</span>:<span style="color:#ae81ff">0</span>,
+    <span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1602583578</span>
+}
 </code></pre></div><p>说明:</p>
 <ol>
 <li>如果errno不为0, 则说明鉴权失败,失败具体信息参考errmsg</li>
 <li>鉴权逻辑参考 api概述</li>
+<li>timestamp参数单位: ms, ts单位: s</li>
 </ol>
 <h2 id="hq_ws_sub">3. 订阅数据方式</h2>
 <p>订阅消息需要客户端发送msg(json格式), symbol是交易对数组,所以支持批量和单个订阅</p>
