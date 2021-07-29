@@ -3,48 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/1.overview/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/1.overview/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/2.market/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/2.market/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/3.asset/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/3.asset/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/4.spot_order/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/4.spot_order/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/5.options_order/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/5.options_order/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/6.hq_api/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/6.swap_order/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/7.hq_ws/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/7.hq_api/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/8.user_ws/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/8.hq_ws/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/oapi/</loc>
+    <loc>https://bitwell-tech.github.io/openapi/9.user_ws/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/openapi/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://bitwell-tech.github.io/oapi/en/"
+                href="https://bitwell-tech.github.io/openapi/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://bitwell-tech.github.io/oapi/"
+                href="https://bitwell-tech.github.io/openapi/"
                 />
   </url>
   
