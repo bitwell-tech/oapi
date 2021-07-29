@@ -3,25 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://bitwell-tech.github.io/openapi/en/en/1.overview/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/1.overview/</loc>
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/openapi/en/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/en/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://bitwell-tech.github.io/openapi/"
+                href="https://bitwell-tech.github.io/oapi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://bitwell-tech.github.io/openapi/en/"
+                href="https://bitwell-tech.github.io/oapi/en/"
                 />
   </url>
   
   <url>
-    <loc>https://bitwell-tech.github.io/openapi/en/en/</loc>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/</loc>
   </url>
   
 </urlset>
