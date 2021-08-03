@@ -12,9 +12,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bitwell-tech.github.io/oapi/1.overview/</guid>
-      <description>API概述 0. 域名 线上域名: https://oapi.bitwellex.com, https://oapi.bitwellex.co
-您可以自行比较使用oapi.bitwellex.com和oapi.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
-其中，oapi.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
+      <description>API概述 0. 域名 线上域名: https://openapi.bitwellex.com, https://您可以自行比较使用openapi.bitwellex.com和openapi.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
+.bitwellex.co
+您可以自行比较使用openapi.bitwellex.com和openapi.bitwellex.co两个域名的延迟情况，选择延迟低的进行使用。
+其中，openapi.bitwellex.co域名对使用aws云服务的用户做了一定的链路延迟优化。
 1. 访问限制 本章节访问限制的细节：
  Rest API  当访问超过频率限制时，将返回429状态：请求太频繁。
 1.1 Rest API 如果传入有效的APIKey 用用户ID限速；如果没有则拿公网IP限速。
