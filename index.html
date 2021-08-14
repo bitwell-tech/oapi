@@ -6754,7 +6754,7 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tr>
 <td>errno</td>
 <td>int</td>
-<td>错误码( <code>0</code> : 代表成功)</td>
+<td>错误码( <code>0</code> : 代表成功, 其他错误码请参考errmsg)</td>
 </tr>
 </tbody>
 </table>
@@ -6843,6 +6843,22 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <tr>
 <td>6</td>
 <td>30min</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4h</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8h</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1week</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1month</td>
 </tr>
 </tbody>
 </table>
@@ -6945,8 +6961,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
       <span style="color:#f92672">&#34;low_24&#34;</span>: <span style="color:#ae81ff">10980.56</span>,
       <span style="color:#f92672">&#34;open&#34;</span>: <span style="color:#ae81ff">11098.02</span>,
       <span style="color:#f92672">&#34;prev_24&#34;</span>: <span style="color:#ae81ff">11142.66</span>,
-      <span style="color:#f92672">&#34;sn&#34;</span>: <span style="color:#ae81ff">214650314992441180</span>,
-      <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#ae81ff">2</span>,
       <span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
       <span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">1596467413652610</span>,
       <span style="color:#f92672">&#34;trade&#34;</span>: <span style="color:#ae81ff">11349</span>,
@@ -6963,8 +6977,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
       <span style="color:#f92672">&#34;low_24&#34;</span>: <span style="color:#ae81ff">0.28397</span>,
       <span style="color:#f92672">&#34;open&#34;</span>: <span style="color:#ae81ff">0.28594</span>,
       <span style="color:#f92672">&#34;prev_24&#34;</span>: <span style="color:#ae81ff">0.289</span>,
-      <span style="color:#f92672">&#34;sn&#34;</span>: <span style="color:#ae81ff">214650314992060860</span>,
-      <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#ae81ff">2</span>,
       <span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;XRP_USDT&#34;</span>,
       <span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">1596467414119937</span>,
       <span style="color:#f92672">&#34;trade&#34;</span>: <span style="color:#ae81ff">0.3146</span>,
@@ -7017,16 +7029,8 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>最近一笔报价成交时间 微秒时间戳</td>
 </tr>
 <tr>
-<td>sn</td>
-<td>成交序列号</td>
-</tr>
-<tr>
 <td>type</td>
-<td>当前数据类型 &ldquo;index&rdquo; 指数，&ldquo;spot&rdquo; 现货 ，&ldquo;options&rdquo; 期权</td>
-</tr>
-<tr>
-<td>status</td>
-<td>状态 0：未上市，1：预上市，2：正常， 3：已停牌， 4：已退市</td>
+<td>当前数据类型 &ldquo;index&rdquo; 指数，&ldquo;spot&rdquo; 现货 ，&ldquo;options&rdquo; 期权, &ldquo;swap&quot;永续</td>
 </tr>
 </tbody>
 </table>
@@ -7059,53 +7063,40 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
 	<span style="color:#f92672">&#34;data&#34;</span>: {
 		<span style="color:#f92672">&#34;ask&#34;</span>: [
-			[<span style="color:#ae81ff">11303</span>, <span style="color:#ae81ff">2.354</span>],
-			[<span style="color:#ae81ff">11303.15</span>, <span style="color:#ae81ff">1.9789</span>],
-			[<span style="color:#ae81ff">11303.23</span>, <span style="color:#ae81ff">1.7953</span>],
-			[<span style="color:#ae81ff">11297.06</span>, <span style="color:#ae81ff">1.3814</span>],
-			[<span style="color:#ae81ff">11300</span>, <span style="color:#ae81ff">0.0778</span>],
-			[<span style="color:#ae81ff">11300.62</span>, <span style="color:#ae81ff">0.028</span>],
-			[<span style="color:#ae81ff">11302.79</span>, <span style="color:#ae81ff">1.4581</span>],
-			[<span style="color:#ae81ff">11300.21</span>, <span style="color:#ae81ff">0.0994</span>],
-			[<span style="color:#ae81ff">11300.22</span>, <span style="color:#ae81ff">0.7582</span>],
-			[<span style="color:#ae81ff">11302.66</span>, <span style="color:#ae81ff">0.0524</span>],
-			[<span style="color:#ae81ff">11302.68</span>, <span style="color:#ae81ff">0.2115</span>],
-			[<span style="color:#ae81ff">11296.45</span>, <span style="color:#ae81ff">2.0452</span>],
-			[<span style="color:#ae81ff">11296.57</span>, <span style="color:#ae81ff">0.1962</span>],
-			[<span style="color:#ae81ff">11296.58</span>, <span style="color:#ae81ff">0.2082</span>],
-			[<span style="color:#ae81ff">11298.07</span>, <span style="color:#ae81ff">0.4463</span>],
-			[<span style="color:#ae81ff">11300.44</span>, <span style="color:#ae81ff">0.0013</span>],
-			[<span style="color:#ae81ff">11301.19</span>, <span style="color:#ae81ff">0.836</span>],
-			[<span style="color:#ae81ff">11300.61</span>, <span style="color:#ae81ff">0.0009</span>],
-			[<span style="color:#ae81ff">11300.83</span>, <span style="color:#ae81ff">0.055</span>],
-			[<span style="color:#ae81ff">11303.14</span>, <span style="color:#ae81ff">0.0437</span>]
+			[<span style="color:#ae81ff">45283.13</span>, <span style="color:#ae81ff">565</span>],
+			[<span style="color:#ae81ff">45283.19</span>, <span style="color:#ae81ff">477</span>],
+			[<span style="color:#ae81ff">45283.23</span>, <span style="color:#ae81ff">696</span>],
+			[<span style="color:#ae81ff">45283.43</span>, <span style="color:#ae81ff">302</span>],
+			[<span style="color:#ae81ff">45283.74</span>, <span style="color:#ae81ff">2220</span>],
+			[<span style="color:#ae81ff">45284.19</span>, <span style="color:#ae81ff">2661</span>],
+			[<span style="color:#ae81ff">45284.64</span>, <span style="color:#ae81ff">1071</span>],
+			[<span style="color:#ae81ff">45285.09</span>, <span style="color:#ae81ff">140</span>],
+			[<span style="color:#ae81ff">45285.58</span>, <span style="color:#ae81ff">619</span>],
+			[<span style="color:#ae81ff">45285.82</span>, <span style="color:#ae81ff">2096</span>],
+			[<span style="color:#ae81ff">45286.14</span>, <span style="color:#ae81ff">7</span>],
+			[<span style="color:#ae81ff">45286.92</span>, <span style="color:#ae81ff">1629</span>],
+			[<span style="color:#ae81ff">45288.27</span>, <span style="color:#ae81ff">1725</span>],
+			[<span style="color:#ae81ff">45288.72</span>, <span style="color:#ae81ff">1886</span>],
+			[<span style="color:#ae81ff">45291.17</span>, <span style="color:#ae81ff">31364</span>]
 		],
 		<span style="color:#f92672">&#34;bid&#34;</span>: [
-			[<span style="color:#ae81ff">11264.32</span>, <span style="color:#ae81ff">0.0113</span>],
-			[<span style="color:#ae81ff">11261.87</span>, <span style="color:#ae81ff">0.11</span>],
-			[<span style="color:#ae81ff">11261.26</span>, <span style="color:#ae81ff">0.1831</span>],
-			[<span style="color:#ae81ff">11261.1</span>, <span style="color:#ae81ff">0.0419</span>],
-			[<span style="color:#ae81ff">11260.88</span>, <span style="color:#ae81ff">0.0019</span>],
-			[<span style="color:#ae81ff">11259.3</span>, <span style="color:#ae81ff">1.1</span>],
-			[<span style="color:#ae81ff">11258.51</span>, <span style="color:#ae81ff">0.8361</span>],
-			[<span style="color:#ae81ff">11264.33</span>, <span style="color:#ae81ff">0.1838</span>],
-			[<span style="color:#ae81ff">11261.14</span>, <span style="color:#ae81ff">0.1954</span>],
-			[<span style="color:#ae81ff">11258.71</span>, <span style="color:#ae81ff">0.0765</span>],
-			[<span style="color:#ae81ff">11261.23</span>, <span style="color:#ae81ff">0.4217</span>],
-			[<span style="color:#ae81ff">11264.08</span>, <span style="color:#ae81ff">0.0336</span>],
-			[<span style="color:#ae81ff">11261.49</span>, <span style="color:#ae81ff">0.0552</span>],
-			[<span style="color:#ae81ff">11260.89</span>, <span style="color:#ae81ff">0.0468</span>],
-			[<span style="color:#ae81ff">11260.75</span>, <span style="color:#ae81ff">0.5703</span>],
-			[<span style="color:#ae81ff">11296.36</span>, <span style="color:#ae81ff">0.0024</span>],
-			[<span style="color:#ae81ff">11264.09</span>, <span style="color:#ae81ff">0.1658</span>],
-			[<span style="color:#ae81ff">11261.25</span>, <span style="color:#ae81ff">0.0473</span>],
-			[<span style="color:#ae81ff">11260.21</span>, <span style="color:#ae81ff">0.0391</span>],
-			[<span style="color:#ae81ff">11264.11</span>, <span style="color:#ae81ff">0.0008</span>]
+			[<span style="color:#ae81ff">45281.16</span>, <span style="color:#ae81ff">247</span>],
+			[<span style="color:#ae81ff">45280.85</span>, <span style="color:#ae81ff">44</span>],
+			[<span style="color:#ae81ff">45280.6</span>, <span style="color:#ae81ff">456</span>],
+			[<span style="color:#ae81ff">45280.26</span>, <span style="color:#ae81ff">248</span>],
+			[<span style="color:#ae81ff">45280.2</span>, <span style="color:#ae81ff">265</span>],
+			[<span style="color:#ae81ff">45279.95</span>, <span style="color:#ae81ff">1226</span>],
+			[<span style="color:#ae81ff">45279.67</span>, <span style="color:#ae81ff">1094</span>],
+			[<span style="color:#ae81ff">45279.22</span>, <span style="color:#ae81ff">2178</span>],
+			[<span style="color:#ae81ff">45278.77</span>, <span style="color:#ae81ff">1875</span>],
+			[<span style="color:#ae81ff">45278.46</span>, <span style="color:#ae81ff">683</span>],
+			[<span style="color:#ae81ff">45278.15</span>, <span style="color:#ae81ff">1478</span>],
+			[<span style="color:#ae81ff">45277.11</span>, <span style="color:#ae81ff">20923</span>],
+			[<span style="color:#ae81ff">45272.95</span>, <span style="color:#ae81ff">1621</span>],
+			[<span style="color:#ae81ff">45272.5</span>, <span style="color:#ae81ff">2153</span>],
+			[<span style="color:#ae81ff">45269.35</span>, <span style="color:#ae81ff">25945</span>]
 		],
-		<span style="color:#f92672">&#34;sn&#34;</span>: <span style="color:#ae81ff">214650314992616380</span>,
-		<span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">1596526503258399</span>,
-		<span style="color:#f92672">&#34;trade&#34;</span>: <span style="color:#ae81ff">11296.45</span>,
-		<span style="color:#f92672">&#34;volume&#34;</span>: <span style="color:#ae81ff">2.3337</span>
+		<span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">1628832932000000</span>,
 	},
 	<span style="color:#f92672">&#34;errmsg&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
 	<span style="color:#f92672">&#34;errno&#34;</span>: <span style="color:#ae81ff">0</span>
@@ -7127,12 +7118,8 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>价格-&gt; 数量</td>
 </tr>
 <tr>
-<td>trade</td>
-<td>最新一笔成交价</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>最近一笔成交量</td>
+<td>time</td>
+<td>内存快照的时间, 单位:us</td>
 </tr>
 </tbody>
 </table>
@@ -7163,18 +7150,18 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tbody>
 </table>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-	<span style="color:#f92672">&#34;data&#34;</span>: [{
-		<span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
-		<span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">11294.07</span>,
-		<span style="color:#f92672">&#34;volume&#34;</span>: <span style="color:#ae81ff">0.005</span>,
-		<span style="color:#f92672">&#34;amount&#34;</span>: <span style="color:#ae81ff">56.47035</span>,
-		<span style="color:#f92672">&#34;direction&#34;</span>: <span style="color:#ae81ff">2</span>,
-		<span style="color:#f92672">&#34;time_us&#34;</span>: <span style="color:#ae81ff">1596526984520229</span>,
-		<span style="color:#f92672">&#34;sn&#34;</span>: <span style="color:#ae81ff">214650314992617124</span>,
-		<span style="color:#f92672">&#34;open_mode&#34;</span>: <span style="color:#e6db74">&#34;other&#34;</span>
-	}],
-	<span style="color:#f92672">&#34;errmsg&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-	<span style="color:#f92672">&#34;errno&#34;</span>: <span style="color:#ae81ff">0</span>
+  <span style="color:#f92672">&#34;data&#34;</span>: [
+    {
+      <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">45313.7</span>,
+	  <span style="color:#f92672">&#34;volume&#34;</span>: <span style="color:#ae81ff">38</span>,
+      <span style="color:#f92672">&#34;amount&#34;</span>: <span style="color:#ae81ff">1721920.6</span>,
+      <span style="color:#f92672">&#34;subtype&#34;</span>: <span style="color:#e6db74">&#34;transaction&#34;</span>,
+      <span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
+      <span style="color:#f92672">&#34;time_us&#34;</span>: <span style="color:#ae81ff">1628833106042871</span>
+    }
+  ],
+  <span style="color:#f92672">&#34;errmsg&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+  <span style="color:#f92672">&#34;errno&#34;</span>: <span style="color:#ae81ff">0</span>
 }
 </code></pre></div><p>逐笔数据结构为数组，可能同时包括多条成交数据</p>
 <table>
@@ -7185,10 +7172,6 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>direction</td>
-<td>买卖方向(1卖, 2买)</td>
-</tr>
 <tr>
 <td>price</td>
 <td>价格</td>
@@ -7206,16 +7189,8 @@ signature <span style="color:#f92672">=</span> base64<span style="color:#f92672"
 <td>成交微秒</td>
 </tr>
 <tr>
-<td>sn</td>
-<td>成交序列号</td>
-</tr>
-<tr>
 <td>symbol</td>
 <td>交易对代码</td>
-</tr>
-<tr>
-<td>open_mode</td>
-<td>open 开仓, close 平仓 other 其他</td>
 </tr>
 </tbody>
 </table>
@@ -7236,7 +7211,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </blockquote>
 <p>QA2:</p>
 <blockquote>
-<p>Q: 比如 USDT_BTC-QUOTE 这条指令 如果我发了多次 会合并吗?我发了同样指令  会成倍的返回消息吗?</p>
+<p>Q: 比如 USDT_BTC-quote 这条指令 如果我发了多次 会合并吗?我发了同样指令  会成倍的返回消息吗?</p>
 <p>A: 会合并, 不会成倍推送消息, 服务端做了唯一校验,如果当前用户订阅了该key,二次订阅无效</p>
 </blockquote>
 <p>QA3:</p>
@@ -7258,7 +7233,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
     <span style="color:#f92672">&#34;action&#34;</span>:<span style="color:#e6db74">&#34;auth&#34;</span>,
     <span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;openapi&#34;</span>,
     <span style="color:#f92672">&#34;access_key&#34;</span>: <span style="color:#e6db74">&#34;W2zxxxxND1Wxxxxtdt9gxxxxJFtxxxxQ&#34;</span>,
-    <span style="color:#f92672">&#34;signature&#34;</span>: <span style="color:#e6db74">&#34;4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o=&#34;</span>,
+    <span style="color:#f92672">&#34;signature&#34;</span>: <span style="color:#e6db74">&#34;4xx5x5A2bLxxxWVxx3Aqpxxxw+ivaA7n5OxxxuYtCJ9o=&#34;</span>,
     <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;1420674445201&#34;</span>
 }
 </code></pre></div><p>鉴权成功后服务端会返回鉴权结果:</p>
@@ -7292,27 +7267,25 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <li>transaction 逐笔交易</li>
 <li>orderbook 盘口数据</li>
 <li>option 期权信息</li>
-<li>kline-15min 15min kline数据</li>
-<li>kline-1min  1min kline数据</li>
-<li>kline-5min  5min kline数据</li>
-<li>kline-30min  30min kline数据</li>
-<li>kline-60min  一小时 kline数据</li>
-<li>kline-1day  一天 kline数据</li>
+<li>kline-{时间单位例如:15min}  kline数据</li>
+<li>swap 永续数据</li>
 </ul>
 <h2 id="hq_ws_data_offer">5. 报价数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-<span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-P&#34;</span>,
-<span style="color:#f92672">&#34;trade&#34;</span>:<span style="color:#ae81ff">34.33</span>,
-<span style="color:#f92672">&#34;high_24&#34;</span>:<span style="color:#ae81ff">44.79</span>,
-<span style="color:#f92672">&#34;low_24&#34;</span>:<span style="color:#ae81ff">32.13</span>,
-<span style="color:#f92672">&#34;volume_24&#34;</span>:<span style="color:#ae81ff">30276</span>,
-<span style="color:#f92672">&#34;amount_24&#34;</span>:<span style="color:#ae81ff">1159539.43</span>,
-<span style="color:#f92672">&#34;prev_24&#34;</span>:<span style="color:#ae81ff">32.99</span>,
-<span style="color:#f92672">&#34;time&#34;</span>:<span style="color:#ae81ff">1593346801180223</span>,
-<span style="color:#f92672">&#34;sn&#34;</span>:<span style="color:#ae81ff">198669742410734082</span>,
-<span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;options&#34;</span>,
-<span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;quote&#34;</span>,
-<span style="color:#f92672">&#34;state&#34;</span>:<span style="color:#ae81ff">2</span>
+    <span style="color:#f92672">&#34;amount_24&#34;</span>: <span style="color:#ae81ff">1359041553290.97</span>,
+	<span style="color:#f92672">&#34;high_24&#34;</span>: <span style="color:#ae81ff">45678</span>,
+	<span style="color:#f92672">&#34;highest_bid&#34;</span>: <span style="color:#ae81ff">45338.04</span>,
+	<span style="color:#f92672">&#34;leverage&#34;</span>: <span style="color:#ae81ff">0</span>,
+	<span style="color:#f92672">&#34;low_24&#34;</span>: <span style="color:#ae81ff">43805.35</span>,
+	<span style="color:#f92672">&#34;lowest_ask&#34;</span>: <span style="color:#ae81ff">45339.94</span>,
+	<span style="color:#f92672">&#34;prev_24&#34;</span>: <span style="color:#ae81ff">45164.09</span>,
+	<span style="color:#f92672">&#34;prev_1h&#34;</span>: <span style="color:#ae81ff">45240.93</span>,
+	<span style="color:#f92672">&#34;subtype&#34;</span>: <span style="color:#e6db74">&#34;quote&#34;</span>,
+	<span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
+	<span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">1628833420434784</span>,
+	<span style="color:#f92672">&#34;trade&#34;</span>: <span style="color:#ae81ff">45338.92</span>,
+	<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;swap&#34;</span>,
+	<span style="color:#f92672">&#34;volume_24&#34;</span>: <span style="color:#ae81ff">30429594</span>
 }
 </code></pre></div><p>字段说明：</p>
 <table>
@@ -7340,6 +7313,14 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <td>24小时最低</td>
 </tr>
 <tr>
+<td>highest_bid</td>
+<td>买一</td>
+</tr>
+<tr>
+<td>lowest_ask</td>
+<td>卖一</td>
+</tr>
+<tr>
 <td>volume_24</td>
 <td>24小时成交量</td>
 </tr>
@@ -7356,16 +7337,8 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <td>最近一笔报价成交时间 微秒时间戳</td>
 </tr>
 <tr>
-<td>sn</td>
-<td>成交序列号</td>
-</tr>
-<tr>
 <td>type</td>
-<td>当前数据类型 &ldquo;index&rdquo; 指数，&ldquo;spot&rdquo; 现货 ，&ldquo;options&rdquo; 期权</td>
-</tr>
-<tr>
-<td>status</td>
-<td>状态 0：未上市，1：预上市，2：正常， 3：已停牌， 4：已退市</td>
+<td>当前数据类型 &ldquo;index&rdquo; 指数，&ldquo;spot&rdquo; 现货 ，&ldquo;options&rdquo; 期权 &ldquo;swap&rdquo; 永续</td>
 </tr>
 </tbody>
 </table>
@@ -7419,28 +7392,74 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </tr>
 </tbody>
 </table>
+<p>kline-{type}参数列表:</p>
+<table>
+<thead>
+<tr>
+<th>type字段枚举值</th>
+<th>type字段说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>day</td>
+</tr>
+<tr>
+<td>2</td>
+<td>hour</td>
+</tr>
+<tr>
+<td>3</td>
+<td>minute</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5min</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15min</td>
+</tr>
+<tr>
+<td>6</td>
+<td>30min</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4h</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8h</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1week</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1month</td>
+</tr>
+</tbody>
+</table>
 <h2 id="hq_ws_data_tick">7. 逐笔数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
     {
-    <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
-    <span style="color:#f92672">&#34;price&#34;</span>:<span style="color:#ae81ff">39.01</span>,
-    <span style="color:#f92672">&#34;volume&#34;</span>:<span style="color:#ae81ff">4</span>,
-    <span style="color:#f92672">&#34;amount&#34;</span>:<span style="color:#ae81ff">156.04</span>,
-    <span style="color:#f92672">&#34;direction&#34;</span>:<span style="color:#ae81ff">1</span>,
-    <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
-    <span style="color:#f92672">&#34;open_mode&#34;</span>:<span style="color:#e6db74">&#34;open&#34;</span>,
-    <span style="color:#f92672">&#34;time_us&#34;</span>:<span style="color:#ae81ff">1593347347135782</span>,
-    <span style="color:#f92672">&#34;sn&#34;</span>:<span style="color:#ae81ff">198669755295637272</span>
+        <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
+        <span style="color:#f92672">&#34;price&#34;</span>:<span style="color:#ae81ff">39.01</span>,
+        <span style="color:#f92672">&#34;volume&#34;</span>:<span style="color:#ae81ff">4</span>,
+        <span style="color:#f92672">&#34;amount&#34;</span>:<span style="color:#ae81ff">156.04</span>,
+        <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
+        <span style="color:#f92672">&#34;time_us&#34;</span>:<span style="color:#ae81ff">1593347347135782</span>
     },
     {
-    <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
-    <span style="color:#f92672">&#34;price&#34;</span>:<span style="color:#ae81ff">38.93</span>,
-    <span style="color:#f92672">&#34;volume&#34;</span>:<span style="color:#ae81ff">5</span>,
-    <span style="color:#f92672">&#34;amount&#34;</span>:<span style="color:#ae81ff">194.65</span>,
-    <span style="color:#f92672">&#34;direction&#34;</span>:<span style="color:#ae81ff">1</span>,
-    <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;transaction&#34;</span>,
-    <span style="color:#f92672">&#34;time_us&#34;</span>:<span style="color:#ae81ff">1593347347135784</span>,
-    <span style="color:#f92672">&#34;sn&#34;</span>:<span style="color:#ae81ff">198669755295637272</span>
+        <span style="color:#f92672">&#34;symbol&#34;</span>:<span style="color:#e6db74">&#34;BTC-0703-9000-C&#34;</span>,
+        <span style="color:#f92672">&#34;price&#34;</span>:<span style="color:#ae81ff">38.93</span>,
+        <span style="color:#f92672">&#34;volume&#34;</span>:<span style="color:#ae81ff">5</span>,
+        <span style="color:#f92672">&#34;amount&#34;</span>:<span style="color:#ae81ff">194.65</span>,
+        <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;transaction&#34;</span>,
+        <span style="color:#f92672">&#34;time_us&#34;</span>:<span style="color:#ae81ff">1593347347135784</span>
     }
 ]
 </code></pre></div><p>逐笔数据结构为数组，可能同时包括多条成交数据</p>
@@ -7452,10 +7471,6 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>direction</td>
-<td>买卖方向(1卖, 2买)</td>
-</tr>
 <tr>
 <td>price</td>
 <td>价格</td>
@@ -7473,16 +7488,8 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <td>成交微秒</td>
 </tr>
 <tr>
-<td>sn</td>
-<td>成交序列号</td>
-</tr>
-<tr>
 <td>symbol</td>
 <td>交易对代码</td>
-</tr>
-<tr>
-<td>open_mode</td>
-<td>open 开仓, close 平仓 other 其他</td>
 </tr>
 </tbody>
 </table>
@@ -7506,8 +7513,7 @@ A: ws的单位是: us , 然后api的单位是: s</p>
     <span style="color:#f92672">&#34;volume&#34;</span>:<span style="color:#ae81ff">3</span>,
    <span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
    <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;orderbook&#34;</span>,
-    <span style="color:#f92672">&#34;time&#34;</span>:<span style="color:#ae81ff">1593347487172380</span>,
-    <span style="color:#f92672">&#34;sn&#34;</span>:<span style="color:#ae81ff">198669755295637354</span>
+    <span style="color:#f92672">&#34;time&#34;</span>:<span style="color:#ae81ff">1593347487172380</span>
 }
 
 </code></pre></div><table>
@@ -7619,10 +7625,13 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 </table>
 <h2 id="hq_ws_data_swap">10. 永续合约信息数据</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;theory_price&#34;</span>:<span style="color:#ae81ff">35.95</span>,
-    <span style="color:#f92672">&#34;funding_rate&#34;</span>:<span style="color:#ae81ff">0.0001</span>,
-    <span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
-    <span style="color:#f92672">&#34;subtype&#34;</span>:<span style="color:#e6db74">&#34;swap&#34;</span>
+    <span style="color:#f92672">&#34;theory_price&#34;</span>: <span style="color:#ae81ff">45338.84</span>,
+	<span style="color:#f92672">&#34;mark_price&#34;</span>: <span style="color:#ae81ff">45338.84</span>,
+	<span style="color:#f92672">&#34;funding_rate&#34;</span>: <span style="color:#ae81ff">0.00009</span>,
+	<span style="color:#f92672">&#34;next_funding_rate&#34;</span>: <span style="color:#ae81ff">0.00009</span>,
+	<span style="color:#f92672">&#34;symbol&#34;</span>: <span style="color:#e6db74">&#34;BTCUSDT_SWAP&#34;</span>,
+	<span style="color:#f92672">&#34;subtype&#34;</span>: <span style="color:#e6db74">&#34;swap&#34;</span>,
+	<span style="color:#f92672">&#34;open_positions&#34;</span>: <span style="color:#ae81ff">609038</span>,
 }
 </code></pre></div><p>字段说明：</p>
 <table>
@@ -7638,8 +7647,16 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <td>理论价格</td>
 </tr>
 <tr>
+<td>mark_price</td>
+<td>标记价格</td>
+</tr>
+<tr>
 <td>funding_rate</td>
-<td>资金费率</td>
+<td>当前资金费率</td>
+</tr>
+<tr>
+<td>next_funding_rate</td>
+<td>预计资金费率</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -7648,6 +7665,10 @@ A: ws的单位是: us , 然后api的单位是: s</p>
 <tr>
 <td>subtype</td>
 <td>订阅的type</td>
+</tr>
+<tr>
+<td>open_positions</td>
+<td>未平持仓数</td>
 </tr>
 </tbody>
 </table>

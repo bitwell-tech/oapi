@@ -113,7 +113,7 @@
       
       <guid>https://bitwell-tech.github.io/oapi/7.hq_api/</guid>
       <description>行情API 输出结构如下
-   字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
+   字段名 字段类型 备注     data object 返回数据   errmsg string 错误信息   errno int 错误码( 0 : 代表成功, 其他错误码请参考errmsg)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } 输出响应头的content-type默认应为application/json 若成功响应，则errno对应为0
 1. K线数据(蜡烛图) 请求方式: GET
 请求地址: /pub/openapi/v1/hq/kline
 登录授权: 否
@@ -135,7 +135,7 @@ wss://openws.bitwellex.co/v2
 QA QA1:
  Q: ws的kline时间 和 kline接口返回历史数据里 date字段的值 单位不太一样 A: ws的单位是: us , 然后api的单位是: s
  QA2:
- Q: 比如 USDT_BTC-QUOTE 这条指令 如果我发了多次 会合并吗?我发了同样指令 会成倍的返回消息吗?
+ Q: 比如 USDT_BTC-quote 这条指令 如果我发了多次 会合并吗?我发了同样指令 会成倍的返回消息吗?
 A: 会合并, 不会成倍推送消息, 服务端做了唯一校验,如果当前用户订阅了该key,二次订阅无效
  QA3:
  Q: 如果分钟,小时,天,分时来回的切换的话,我是不是要频繁的先给ws发送unsub请求才行? 先发送unsub 再发送sub
