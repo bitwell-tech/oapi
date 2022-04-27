@@ -26,7 +26,7 @@
 2.2 发起请求 所有REST请求头都必须包含如下KEY：
  BW-ACCESS-KEY: 字符串类型的APIKey。 BW-ACCESS-SIGN: 使用Base64编码签名(请参阅签名)。 BW-ACCESS-TIMESTAMP: 发起请求的时间戳。  FT-language 语言(可选)，支持以下三种，默认 &amp;ldquo;en-US&amp;rdquo;
  简体中文 zh-CN 繁体中文 zh-HK 英文 en-US  所有请求都应该含有application/json类型内容，并且是有效的JSON。
-2.3 签名 BW-ACCESS-SIGN的请求头是对timestamp + Request Method + Request Path + Request body + SecretKey　(其中+表示字符串连接) 使用HMAC SHA256方法加密，然后通过Base64编码输出而得。</description>
+2.3 签名 BW-ACCESS-SIGN的请求头是对timestamp + Request Method + Request Path + Request body (其中+表示字符串连接) 使用HMAC SHA256方法加密，然后通过Base64编码输出而得。</description>
     </item>
     
     <item>
