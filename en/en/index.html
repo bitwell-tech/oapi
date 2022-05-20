@@ -15,7 +15,7 @@
 
 
 <link href='/oapi/styles/screen.min.e8678de076956ae7b017e5099b56ea9560f0958b0ef594e505f7fb480140c9b6.css' rel="stylesheet" media="screen" integrity="sha256-6GeN4HaVauewF&#43;UJm1bqlWDwlYsO9ZTlBff7SAFAybY=" />
-<link href='/oapi/styles/print.min.e2288ee7d42983088414524ba4bbac63c7cc0bd63f6d3c7b23a28cb7c3719429.css' rel="stylesheet" media="print" integrity="sha256-4iiO59QpgwiEFFJLpLusY8fMC9Y/bTx7I6KMt8NxlCk=" />
+<link href='/oapi/styles/print.min.ea07e3b919303372a6da9c13f974e8f508976e4fd722a22e35599801385ed85b.css' rel="stylesheet" media="print" integrity="sha256-6gfjuRkwM3Km2pwT&#43;XTo9QiXbk/XIqIuNVmYAThe2Fs=" />
 
 
     
@@ -71,7 +71,46 @@
         
         
             <li>
-                <a href="#api-overview" class="toc-h1 toc-link" data-title="API Overview">API Overview</a>
+                <a href="#en_api_overview" class="toc-h1 toc-link" data-title="API Overview">API Overview</a>
+                
+                    <ul class="toc-list-h2">
+                        
+                            <li><a href="#en_domain_name" class="toc-h2 toc-link" data-title="0. Base endpoints">0. Base endpoints</a></li>
+                        
+                            <li><a href="#en_restricting_access" class="toc-h2 toc-link" data-title="1. Access Restriction">1. Access Restriction</a></li>
+                        
+                            <li><a href="#en_verification" class="toc-h2 toc-link" data-title="2. Validation">2. Validation</a></li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="#en_spot_api" class="toc-h1 toc-link" data-title="Spot API">Spot API</a>
+                
+                    <ul class="toc-list-h2">
+                        
+                            <li><a href="#en_place_order" class="toc-h2 toc-link" data-title="1. Place an order">1. Place an order</a></li>
+                        
+                            <li><a href="#en_batch_orders" class="toc-h2 toc-link" data-title="2. Batch orders">2. Batch orders</a></li>
+                        
+                            <li><a href="#en_cancel_orders" class="toc-h2 toc-link" data-title="3. Cancel orders">3. Cancel orders</a></li>
+                        
+                            <li><a href="#en_batch_cancel_orders" class="toc-h2 toc-link" data-title="4. Batch order cancellation">4. Batch order cancellation</a></li>
+                        
+                            <li><a href="#en_symbol_batch_cancel_orders" class="toc-h2 toc-link" data-title="5. Trading pair batch order cancellation">5. Trading pair batch order cancellation</a></li>
+                        
+                            <li><a href="#en_order_detail" class="toc-h2 toc-link" data-title="6. Order details">6. Order details</a></li>
+                        
+                            <li><a href="#en_order_query" class="toc-h2 toc-link" data-title="7. Query open Order">7. Query open Order</a></li>
+                        
+                            <li><a href="#en_order_query_filled" class="toc-h2 toc-link" data-title="8. Query order history">8. Query order history</a></li>
+                        
+                            <li><a href="#en_order_query_all" class="toc-h2 toc-link" data-title="9. All order query">9. All order query</a></li>
+                        
+                            <li><a href="#en_order_query_match" class="toc-h2 toc-link" data-title="10. Query filled order">10. Query filled order</a></li>
+                        
+                    </ul>
                 
             </li>
         
@@ -87,9 +126,1820 @@
         <div class="content">
             
     
-        <h1 id="api-overview">API Overview</h1>
-<p>Basic information</p>
+        <h1 id="en_api_overview">API Overview</h1>
+<h2 id="en_domain_name">0. Base endpoints</h2>
+<p>Base endpoints: <a href="https://openapi.bitwellex.com">https://openapi.bitwellex.com</a>, <a href="https://openapi.bitwellex.co">https://openapi.bitwellex.co</a></p>
+<p>Users can compare the latency between openapi.bitwellex.com and openapi.bitwellex.co, and choose the one with lower latency.</p>
+<p>Among these endpoints, openapi.bitwellex.co has certain link latency optimization for users using aws cloud service.</p>
+<h2 id="en_restricting_access">1. Access Restriction</h2>
+<p>Details of access restrictions in this section.</p>
+<ul>
+<li>Rest API</li>
+</ul>
+<p>When the access exceeds the rate limit, the status 429 is returned: Requests are too frequent.</p>
+<h3 id="11-rest-api">1.1 Rest API</h3>
+<p>If the incoming APIKey is valid, limit the speed with the user ID; if not, limit the speed with the public IP.</p>
+<p>Speed limit rules: There are separate instructions on each interface. If not, the general interface speed limit is 5 times per second.</p>
+<h3 id="12-websocket">1.2 WebSocket</h3>
+<p>WebSocket limits each endpoints to 50 requests  per second.</p>
+<h2 id="en_verification">2. Validation</h2>
+<p>This section focuses on the following four areas of detail for validation:</p>
+<p>●	Generate APIKey
+●	Initiating Requests
+●	Signatures
+●	Timestamp</p>
+<h3 id="21-generating-apikey">2.1 Generating APIKey</h3>
+<p>Before users can sign any request, they must create an APIKey through the BitWell website：</p>
+<ul>
+<li>APIKey</li>
+<li>SecretKey</li>
+</ul>
+<p>APIKey and SecretKey will be generated and provided by BitWell.。</p>
+<h3 id="22-request-initiation">2.2 Request initiation</h3>
+<p>All REST API request headers must contain the following KEY：</p>
+<ul>
+<li>BW-ACCESS-KEY: APIKey for string type.</li>
+<li>BW-ACCESS-SIGN: Signature using Base64 encoding (see Signature).</li>
+<li>BW-ACCESS-TIMESTAMP: Timestamp of the request initiation.</li>
+</ul>
+<p>FT-language language (optional), supports the following three, default &ldquo;en-US&rdquo;</p>
+<ul>
+<li>简体中文 zh-CN</li>
+<li>繁体中文 zh-HK</li>
+<li>英文 en-US</li>
+</ul>
+<p>All requests should contain application/json type content and be valid JSON.</p>
+<h3 id="23-signatures">2.3 Signatures</h3>
+<p>The request header of BW-ACCESS-SIGN is encrypted using HMAC SHA256 method on timestamp + Request Method + Request Path + Request body + SecretKey (where + denotes a string connection), and then exported using Base64 encoding.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+<th>Comments</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td>Unix timestamp format, accurate to the millisecond</td>
+<td>Values are the same as the BW-ACCESS-TIMESTAMP request header.</td>
+<td>1420674445201</td>
+</tr>
+<tr>
+<td>Request Method</td>
+<td>Request Method</td>
+<td>All Capitalized Letters</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>Request Path</td>
+<td>Request Interface Path</td>
+<td>GET requests with query parameters</td>
+<td>/order/pending?num=30</td>
+</tr>
+<tr>
+<td>Request Body</td>
+<td>String of the request subject</td>
+<td>1) If the request has no body (usually a GET request), then Request Body is omitted</td>
+<td></td>
+</tr>
+<tr>
+<td>2) The value is consistent with the request</td>
+<td>{&ldquo;symbol&rdquo;:&ldquo;BTC_USDT&rdquo;,&ldquo;order_id&rdquo;:&ldquo;1010000867765&rdquo;}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SecretKey</td>
+<td>Private Key</td>
+<td>Generated by the BitWell User Center Application</td>
+<td>DtUTxNBkTUKr4N9hwaYmDSRgxyIDD0Za</td>
+</tr>
+</tbody>
+</table>
+<h4 id="231-javascript-sample">2.3.1 javascript sample</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js&#34;</span><span style="color:#f92672">&gt;&lt;/</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js&#34;</span><span style="color:#f92672">&gt;&lt;/</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js&#34;</span><span style="color:#f92672">&gt;&lt;/</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
 
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Date</span>()<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span>();
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;GET&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/users/self/verify&#39;</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">secretKey</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-BW Secret Key-&#34;</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">hash</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoJS</span><span style="color:#f92672">.</span><span style="color:#a6e22e">HmacSHA256</span>(<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">secretKey</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">hashInBase64</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoJS</span><span style="color:#f92672">.</span><span style="color:#a6e22e">enc</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Base64</span><span style="color:#f92672">.</span><span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">hash</span>);
+  <span style="color:#a6e22e">document</span><span style="color:#f92672">.</span><span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">hashInBase64</span>);
+<span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+</code></pre></div><h4 id="232-php-sample">2.3.2 PHP sample</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$secretKey <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Apply BW Api Secret Key and replace with your&#39;s&#34;</span>;
+$timestamp <span style="color:#f92672">=</span> <span style="color:#a6e22e">intval</span>(<span style="color:#a6e22e">microtime</span>(<span style="color:#66d9ef">true</span>)<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span>);
+$requestMethod <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GET&#39;</span>;
+$requestPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/api/v1/orders/pending&#39;</span>;
+$requestBody <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+$message <span style="color:#f92672">=</span> $timestamp<span style="color:#f92672">.</span>$requestMethod<span style="color:#f92672">.</span>$requestPath<span style="color:#f92672">.</span>$requestBody;
+
+$s <span style="color:#f92672">=</span> <span style="color:#a6e22e">hash_hmac</span>(<span style="color:#e6db74">&#39;sha256&#39;</span>, $message, $secretKey, <span style="color:#66d9ef">true</span>);
+<span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">base64_encode</span>($s);
+</code></pre></div><h4 id="233-python-27-sample">2.3.3 Python 2.7 sample</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+<span style="color:#f92672">import</span> hmac
+<span style="color:#f92672">import</span> base64
+<span style="color:#f92672">import</span> time
+
+timstamp <span style="color:#f92672">=</span> int(round(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>))
+m <span style="color:#f92672">=</span> str(timstamp) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;GET&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/order/pending?start=1&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#39;</span> 
+message <span style="color:#f92672">=</span> bytes(m)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+secret <span style="color:#f92672">=</span> bytes(<span style="color:#e6db74">&#34;--secretKey--&#34;</span>)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+
+signature <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(hmac<span style="color:#f92672">.</span>new(secret, message, digestmod<span style="color:#f92672">=</span>hashlib<span style="color:#f92672">.</span>sha256)<span style="color:#f92672">.</span>digest())
+<span style="color:#66d9ef">print</span>(signature)
+</code></pre></div><h4 id="234--go-sample">2.3.4  Go sample</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;crypto/hmac&#34;</span>
+	<span style="color:#e6db74">&#34;crypto/sha256&#34;</span>
+	<span style="color:#e6db74">&#34;encoding/base64&#34;</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ComputeHmac256</span>(<span style="color:#a6e22e">message</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">secret</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+	<span style="color:#a6e22e">key</span> <span style="color:#f92672">:=</span> []byte(<span style="color:#a6e22e">secret</span>)
+	<span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">hmac</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">sha256</span>.<span style="color:#a6e22e">New</span>, <span style="color:#a6e22e">key</span>)
+	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#a6e22e">message</span>))
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">base64</span>.<span style="color:#a6e22e">StdEncoding</span>.<span style="color:#a6e22e">EncodeToString</span>(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Sum</span>(<span style="color:#66d9ef">nil</span>))
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>() <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span>
+	<span style="color:#a6e22e">message</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d%s%s%s&#34;</span>, <span style="color:#a6e22e">timestamp</span>, <span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;/order/pending?from=3&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+	<span style="color:#a6e22e">secretKey</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;-BW Secret Key-&#34;</span>
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">ComputeHmac256</span>(<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">secretKey</span>))
+}
+</code></pre></div><p>hmac Reference: <a href="https://tools.ietf.org/id/draft-mcgrew-aead-aes-cbc-hmac-sha2-03.html">https://tools.ietf.org/id/draft-mcgrew-aead-aes-cbc-hmac-sha2-03.html</a></p>
+<p>hmac sha256 Example Reference: <a href="https://www.jokecamp.com/blog/examples-of-creating-base64-hashes-using-hmac-sha256-in-different-languages/">https://www.jokecamp.com/blog/examples-of-creating-base64-hashes-using-hmac-sha256-in-different-languages/</a></p>
+<h3 id="24-timestamps">2.4 Timestamps</h3>
+<p>The BW-ACCESS-TIMESTAMP request header must be in Unix timestamp format (e.g. 1420674445201), accurate to the millisecond.</p>
+<h3 id="25-websocket-signing">2.5 Websocket Signing</h3>
+<p>Note: When signing Websocket, the Request Method is set to POST, and the Request Path and Request Body are set to empty strings</p>
+
+    
+        <h1 id="en_spot_api">Spot API</h1>
+<p>The output structure is as follows</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>Back to data</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>string</td>
+<td>Error messages</td>
+</tr>
+<tr>
+<td>errno</td>
+<td>int</td>
+<td>Error code ( 0 : for success)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span>{},
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><p>The content-type of the output response header defaults to application/json and the corresponding errno is 0 if the response is successful.</p>
+<p>In addition, in the page field of the page returned by the pagination, total is the total number of data items (not total pages).</p>
+<h2 id="en_place_order">1. Place an order</h2>
+<p>Request method: <code>POST</code><br>
+Request address: <code>/openapi/v1/spot/order/place</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+	<span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
+	<span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;buy_limit&#34;</span>,
+	<span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8838</span>,
+	<span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0.01</span>,
+	<span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111111&#34;</span>
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>NA</td>
+<td>Example: BTC_USDT, ETH_USDT</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>NA</td>
+<td><code>buy_limit</code>:limit-buy,<br> <code>sell_limit</code>:limit-sell,<br> <code>buy_market</code>:market-buy,<br> <code>sell_market</code>:market-sell,<br> <code>limit_stop_loss</code>:limit stop loss,<br><code>limit_stop_profit</code>:limit stop profit,<br><code>market_stop_loss</code>:market stop loss,<br> <code>market_stop_profit</code>:market stop profit,<br> <code>buy_post_only</code>: buy post only,<br> <code>sell_post_only</code>: sell post only</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>false</td>
+<td>Order price</td>
+<td>NA</td>
+<td>Not valid for market orders</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>float</td>
+<td>false</td>
+<td>Trigger price for stop-loss and take-profit orders</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>remain_type</td>
+<td>string</td>
+<td>false</td>
+<td>Remaining Treatment Type</td>
+<td></td>
+<td><code>cancel</code>: Immediate cancellation of unfulfilled partial orders<br><code>limit_match_best</code>: Place order at the best traded price, or cancelled if not filled<br><code>limit_last</code>: Place order at the last traded price, or cancelled if not filled<br><code>limit_side_best</code>: Place order at the best available market price. If there is no market, then cancel the order.<br><code>limit</code>: Place order with the limit price<br></td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>false</td>
+<td>User-created order id</td>
+<td>NA</td>
+<td>Maximum length is 32 characters</td>
+</tr>
+<tr>
+<td>retain_seconds</td>
+<td>int</td>
+<td>false</td>
+<td>Pending order retention time</td>
+<td>0</td>
+<td>Unit: seconds, 0 means not overdue</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>remain_type : the remaining processing type, default value</p>
+<p>Limit orders, remain_type with limit: place orders at the limit price.</p>
+<p>Market order, remain_type with cancel:  Immediate cancellation of unfulfilled partial order.</p>
+</li>
+<li>
+<p>● Market order, remain_type only supports cancel:  Immediate cancellation of unfulfilled partial order.</p>
+</li>
+</ul>
+<h3 id="order_type-specific-categories">order_type Specific Categories</h3>
+<h4 id="11-buy_limit-limit-buy">1.1 <code>buy_limit</code>: limit-buy</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: buy_limit</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>Order price</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="12-sell_limit-limit-sell">1.2 <code>sell_limit</code>: limit-sell</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: sell_limit</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>Order price</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="13-buy_market-market-buy">1.3 <code>buy_market</code>: market-buy</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: buy_market</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="14-sell_market-market-sell">1.4 <code>sell_market</code>: market-sell</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: sell_market</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="15-limit_stop_loss-limit-stop-loss">1.5 <code>limit_stop_loss</code>: limit stop loss</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: limit_stop_loss</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>Order price</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>float</td>
+<td>true</td>
+<td>Trigger price: the line of stop loss</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="16-limit_stop_profit-limit-stop-profit">1.6 <code>limit_stop_profit</code>: limit stop profit</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: limit_stop_profit</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>Order price</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>float</td>
+<td>true</td>
+<td>Trigger price: the line of stop profit</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="17-market_stop_loss-market-stop-loss">1.7 <code>market_stop_loss</code>: market stop loss</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: market_stop_loss</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>float</td>
+<td>true</td>
+<td>Trigger price: the line of stop profit</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="18-market_stop_profit-market-stop-profit">1.8 <code>market_stop_profit</code>: market stop profit</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: market_stop_profit</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>float</td>
+<td>true</td>
+<td>Trigger price: the line of stop profit</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="19-buy_post_only-buy-post-only">1.9 <code>buy_post_only</code>: buy post only</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: buy_post_only</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>Order price</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<h4 id="110-sell_post_only-sell-post-only">1.10 <code>sell_post_only</code>: sell post only</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>Value: sell_post_only</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>true</td>
+<td>Order price</td>
+<td>See above</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>See above</td>
+</tr>
+</tbody>
+</table>
+<p>Response Data:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tri_order_id</td>
+<td>int</td>
+<td>Trigger Order Number (Trigger order only)</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>Order id</td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>User-created order id (if any)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;tri_order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1010000867764</span>, 
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1010000867765</span>,
+        <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="en_batch_orders">2. Batch orders</h2>
+<ul>
+<li>Up to 5 orders per batch</li>
+</ul>
+<p>Request method: <code>POST</code><br>
+Request address: <code>/openapi/v1/spot/order/batch_place</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;batch_orders&#34;</span><span style="color:#f92672">:</span>[
+        {
+            <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;XRP_USDT&#34;</span>,
+            <span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;buy_limit&#34;</span>,
+            <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0.21</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,
+            <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111111&#34;</span>
+        }, {
+            <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;XRP_USDT&#34;</span>,
+            <span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sell_limit&#34;</span>,
+            <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0.22</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,
+            <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111112&#34;</span>
+        }, {
+            <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;XRP_USDT&#34;</span>,
+            <span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;buy_market&#34;</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,
+            <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111113&#34;</span>
+        }, {
+            <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;XRP_USDT&#34;</span>,
+            <span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sell_market&#34;</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,
+            <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111114&#34;</span>
+        }, {
+            <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;XRP_USDT&#34;</span>,
+            <span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;limit_stop_loss&#34;</span>,
+            <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0.21</span>,
+            <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,
+            <span style="color:#e6db74">&#34;tri_price&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0.19</span>,
+            <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111115&#34;</span>
+        }
+    ]
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>batch_orders</td>
+<td>array</td>
+<td>true</td>
+<td>Order data</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>参数 <code>batch_orders</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>NA</td>
+<td>Example: BTC_USDT, ETH_USDT</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>true</td>
+<td>Order type</td>
+<td>NA</td>
+<td><code>buy_limit</code>:limit-buy,<br> <code>sell_limit</code>:limit-sell,<br> <code>buy_market</code>:market-buy,<br> <code>sell_market</code>:market-sell,<br> <code>limit_stop_loss</code>:limit stop loss,<br><code>limit_stop_profit</code>:limit stop profit,<br><code>market_stop_loss</code>:market stop loss,<br> <code>market_stop_profit</code>:market stop profit,<br> <code>buy_post_only</code>: buy post only,<br> <code>sell_post_only</code>: sell post only</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>false</td>
+<td>Order price</td>
+<td>NA</td>
+<td>Not valid for market orders</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>true</td>
+<td>Order volume</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>float</td>
+<td>false</td>
+<td>Trigger price for stop-loss and take-profit orders</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>remain_type</td>
+<td>string</td>
+<td>false</td>
+<td>Remaining Treatment Type</td>
+<td></td>
+<td><code>cancel</code>:  Immediate cancellation of unfulfilled partial orders<br><code>limit_match_best</code>: Place order at the best traded price, or cancelled if not filled<br><code>limit_last</code>: Place order at the last traded price, or cancelled if not filled<br><code>limit_side_best</code>: Place order at the best available market price. If there is no market, then cancel the order.<br><code>limit</code>: Place order with the limit price<br></td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>false</td>
+<td>User-created order ud</td>
+<td>NA</td>
+<td>Maximum length is 32 characters</td>
+</tr>
+<tr>
+<td>retain_seconds</td>
+<td>int</td>
+<td>false</td>
+<td>Pending order retention time</td>
+<td>0</td>
+<td>Unit: seconds, 0 means not expired</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>● remain_type : the remaining processing type, the default value is the same as &ldquo;order api&rdquo;.</p>
+</li>
+<li>
+<p>● Market order, remain_type only supports cancel:  Immediate cancellation of unfulfilled partial order.</p>
+</li>
+</ul>
+<h3 id="order_type-same-as-order-api">Order_type: Same as &ldquo;order api&rdquo;.</h3>
+<p>Response Data:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Order data</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return parameters <code>items</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>Order id</td>
+</tr>
+<tr>
+<td>tri_order_id</td>
+<td>int</td>
+<td>Trigger Order Number (Trigger order only)</td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>User-created order id (if any)</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>string</td>
+<td>Error messages</td>
+</tr>
+<tr>
+<td>errno</td>
+<td>int</td>
+<td>Error code (0: for success)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
+                <span style="color:#e6db74">&#34;tri_order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868734</span>,
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+            },
+            {
+                <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;c111111a11112&#34;</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
+                <span style="color:#e6db74">&#34;tri_order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;Invalid remain type&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">11010101</span>
+            }
+        ]
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="en_cancel_orders">3. Cancel orders</h2>
+<p>Request method: <code>POST</code><br>
+Request address: <code>/openapi/v1/spot/order/cancel</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000869102</span>
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>true</td>
+<td>Order id</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Response Data:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1010000866876</span>,
+        <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;c111111a11111&#34;</span>,
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="en_batch_cancel_orders">4. Batch order cancellation</h2>
+<ul>
+<li>A batch of up to 10 orders</li>
+</ul>
+<p>Request method: <code>POST</code><br>
+Request address: <code>/openapi/v1/spot/order/batch_cancel</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+{
+	<span style="color:#e6db74">&#34;order_ids&#34;</span><span style="color:#f92672">:</span> [
+		<span style="color:#ae81ff">1010000869123</span>,
+		<span style="color:#ae81ff">1010000869124</span>
+	]
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_ids</td>
+<td>int[]</td>
+<td>true</td>
+<td>Order id</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Response Data:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>array</td>
+<td>successfully cancelled orders</td>
+</tr>
+<tr>
+<td>failed</td>
+<td>array</td>
+<td>failed cancelled orders</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return parameters <code>success</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>Order id</td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>User-created order ud(if any)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return parameters <code>failed</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>Order id</td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>User-created order ud(if any)</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>string</td>
+<td>Error messages（Valid only for declined orders）</td>
+</tr>
+<tr>
+<td>errno</td>
+<td>int</td>
+<td>Error code（Valid only for declined orders）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;failed&#34;</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;Failed to cancel, the order has been processed&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">11010202</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868741</span>
+            }
+        ],
+        <span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111111&#34;</span>,
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868744</span>
+            },
+            {
+                <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;test1111111111112&#34;</span>,
+                <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1010000868745</span>
+            }
+        ]
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="en_symbol_batch_cancel_orders">5. Trading pair batch order cancellation</h2>
+<p>Request method: <code>POST</code><br>
+Request address:<code>/openapi/v1/spot/order/symbol_batch_cancel</code><br>
+Request Authorization:<code>Yes</code></p>
+<p>Request Parameters:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+{
+	<span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
+    <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1.234</span>
+}
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pair</td>
+<td>NA</td>
+<td>Example: BTC_USDT, ETH_USDT</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>int</td>
+<td>false</td>
+<td>Trading pair</td>
+<td><code>0</code></td>
+<td>1: Cancel sell orders; 2: Cancel buy orders; 0: Cancel buy&amp;sell orders</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>false</td>
+<td>Cancel order price</td>
+<td><code>0</code></td>
+<td>Cancel all orders between the latest price and the buy one/sell one price; and the ones with a value of 0 does not take effect</td>
+</tr>
+</tbody>
+</table>
+<p>Response Data:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span>{},
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="en_order_detail">6. Order details</h2>
+<p>Request method: <code>GET</code><br>
+Request address: <code>/openapi/v1/spot/order/query</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>true</td>
+<td>Order id</td>
+<td>NA</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Response Data:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_time</td>
+<td>int</td>
+<td>Order place time</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>Order id</td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>User-created order ud</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Order side, buy: buy order, sell: sell order</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>string</td>
+<td>Order volume</td>
+</tr>
+<tr>
+<td>match_volume</td>
+<td>string</td>
+<td>Order filled amount</td>
+</tr>
+<tr>
+<td>match_amount</td>
+<td>string</td>
+<td>Order filled total</td>
+</tr>
+<tr>
+<td>queue_price</td>
+<td>string</td>
+<td>Pending order price</td>
+</tr>
+<tr>
+<td>queue_volume</td>
+<td>string</td>
+<td>Pending order amount</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>Order type,<br> <code>buy_limit</code>:limit-buy,<br> <code>sell_limit</code>:limit-sell,<br> <code>buy_market</code>:market-buy,<br> <code>sell_market</code>:market-sell,<br> <code>limit_stop_loss</code>:limit stop loss,<br><code>limit_stop_profit</code>：limit stop profit,<br><code>market_stop_loss</code>：market stop loss,<br> <code>market_stop_profit</code>：market stop profit,<br> <code>buy_post_only</code>: buy post only,<br> <code>sell_post_only</code>: sell post only</td>
+</tr>
+<tr>
+<td>remain_type</td>
+<td>string</td>
+<td>Remaining Treatment Type,  <code>cancel</code>:  Immediate cancellation of unfulfilled partial orders<br><code>limit_match_best</code>: Place order at the best traded price, or cancelled if not filled<br><code>limit_last</code>: Place order at the last traded price, or cancelled if not filled<br><code>limit_side_best</code>: Place order at the best available market price. If there is no market, then cancel the order.<br><code>limit</code>: Place order with the limit price<br></td>
+</tr>
+<tr>
+<td>state</td>
+<td>int</td>
+<td>Order status, <code>0</code>. pending, <code>1</code>. open order, <code>2</code>. canceling order,  <code>3</code>. canceled order, <code>4</code>. partial filled, <code>5</code>. completed, <code>6</code>.  error, <code>7</code>. waiting for trigger, <code>8</code>. triggered, <code>9</code>. Trigger Price Failure</td>
+</tr>
+<tr>
+<td>tri_direction</td>
+<td>string</td>
+<td>Trigger direction, <code>up</code>: up trigger, <code>down</code>: down trigger</td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>string</td>
+<td>Trigger price</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;order_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1601283710</span>,
+        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10100002577892</span>,
+        <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test00001&#34;</span>,
+        <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
+        <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy&#34;</span>,
+        <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7000&#34;</span>,
+        <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.001&#34;</span>,
+        <span style="color:#e6db74">&#34;match_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.001&#34;</span>,
+        <span style="color:#e6db74">&#34;match_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7&#34;</span>,
+        <span style="color:#e6db74">&#34;queue_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7000&#34;</span>,
+        <span style="color:#e6db74">&#34;queue_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
+        <span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy_limit&#34;</span>,
+        <span style="color:#e6db74">&#34;state&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,
+        <span style="color:#e6db74">&#34;tri_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
+        <span style="color:#e6db74">&#34;tri_direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+        <span style="color:#e6db74">&#34;remain_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;limit&#34;</span>
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="en_order_query">7. Query open Order</h2>
+<p>Request method: <code>GET</code><br>
+Request address: <code>/openapi/v1/spot/order/pending</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>false</td>
+<td>Trading pair</td>
+<td>NA</td>
+<td>Example: BTC_USDT, ETH_USDT</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>string</td>
+<td>false</td>
+<td>Query start date</td>
+<td>NA</td>
+<td>Date format yyyy-mm-dd, Query by order generation time</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>string</td>
+<td>false</td>
+<td>Query end date</td>
+<td>NA</td>
+<td>Date format yyyy-mm-dd, Query by order generation time</td>
+</tr>
+<tr>
+<td>num</td>
+<td>int</td>
+<td>false</td>
+<td>Number of result sets</td>
+<td>10</td>
+<td>Number of result sets returned per page, max. 100, default is 10 if not filled</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Related to start_date, end_date
+<ol>
+<li>The start and end times must be simultaneous</li>
+<li>Start time should less than or equal to end time</li>
+<li>End time cannot be greater than the current time</li>
+</ol>
+</li>
+</ul>
+<p>Response Data:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Order list</td>
+</tr>
+<tr>
+<td>page</td>
+<td>object</td>
+<td>Pages info</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return parameters <code>page</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prev</td>
+<td>string</td>
+<td>Previous page, the value is &quot;&quot; when page 1..</td>
+</tr>
+<tr>
+<td>next</td>
+<td>string</td>
+<td>Next page, the value is &quot;&quot; if the length of the items array is less than num.</td>
+</tr>
+</tbody>
+</table>
+<p>Pagination usage：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">Page</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> 
+    <span style="color:#e6db74">`openapi/v1/spot/order/pending`</span>
+
+<span style="color:#a6e22e">Previous</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">If</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">current</span> <span style="color:#a6e22e">page</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">greater</span> <span style="color:#a6e22e">than</span> <span style="color:#e6db74">`1`</span>, <span style="color:#e6db74">`prev`</span> <span style="color:#a6e22e">does</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">follows</span>
+    <span style="color:#e6db74">`openapi/v1/spot/order/pending?prev_id=xxxx&amp;page_index=2`</span>
+
+<span style="color:#a6e22e">Next</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">When</span> <span style="color:#a6e22e">the</span> <span style="color:#e6db74">`items`</span> <span style="color:#66d9ef">array</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">equal</span> <span style="color:#a6e22e">to</span> <span style="color:#e6db74">`num`</span>, <span style="color:#e6db74">`next`</span> <span style="color:#a6e22e">does</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">.</span>
+    <span style="color:#e6db74">`openapi/v1/spot/order/pending?next_id=xxxx&amp;page_index=3`</span>
+</code></pre></div><ul>
+<li>Return parameters <code>items</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_time</td>
+<td>int</td>
+<td>Order place time</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>Order id</td>
+</tr>
+<tr>
+<td>client_oid</td>
+<td>string</td>
+<td>User-created order ud</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Order side, buy: buy order, sell: sell order</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>string</td>
+<td>Order volume</td>
+</tr>
+<tr>
+<td>match_volume</td>
+<td>string</td>
+<td>Order filled amount</td>
+</tr>
+<tr>
+<td>match_amount</td>
+<td>string</td>
+<td>Order filled total</td>
+</tr>
+<tr>
+<td>queue_price</td>
+<td>string</td>
+<td>Pending order price</td>
+</tr>
+<tr>
+<td>queue_volume</td>
+<td>string</td>
+<td>Pending order amount</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>Order type,<br> <code>buy_limit</code>:limit-buy,<br> <code>sell_limit</code>:limit-sell,<br> <code>buy_market</code>:market-buy,<br> <code>sell_market</code>:market-sell,<br> <code>limit_stop_loss</code>:limit stop loss,<br><code>limit_stop_profit</code>：limit stop profit,<br><code>market_stop_loss</code>：market stop loss,<br> <code>market_stop_profit</code>：market stop profit,<br> <code>buy_post_only</code>: buy post only,<br> <code>sell_post_only</code>: sell post only</td>
+</tr>
+<tr>
+<td>remain_type</td>
+<td>string</td>
+<td>Remaining Treatment Type, <code>cancel</code>:  Immediate cancellation of unfulfilled partial orders<br><code>limit_match_best</code>: Place order at the best traded price, or cancelled if not filled<br><code>limit_last</code>: Place order at the last traded price, or cancelled if not filled<br><code>limit_side_best</code>: Place order at the best available market price. If there is no market, then cancel the order.<br><code>limit</code>: Place order with the limit price<br></td>
+</tr>
+<tr>
+<td>state</td>
+<td>int</td>
+<td>Order status, <code>0</code>. pending, <code>1</code>. open order, <code>2</code>. canceling order,  <code>3</code>. canceled order, <code>4</code>. partial filled, <code>5</code>. completed, <code>6</code>.  error, <code>7</code>. waiting for trigger, <code>8</code>. triggered, <code>9</code>. Trigger Price Failure</td>
+</tr>
+<tr>
+<td>tri_direction</td>
+<td>string</td>
+<td>Trigger direction, <code>up</code>: up trigger, <code>down</code>: down trigger</td>
+</tr>
+<tr>
+<td>tri_price</td>
+<td>string</td>
+<td>Trigger price</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#e6db74">&#34;order_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1601283710</span>,
+                <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10100002577892</span>,
+                <span style="color:#e6db74">&#34;client_oid&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test00001&#34;</span>,
+                <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy&#34;</span>,
+                <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7000&#34;</span>,
+                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.001&#34;</span>,
+                <span style="color:#e6db74">&#34;match_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.001&#34;</span>,
+                <span style="color:#e6db74">&#34;match_amount&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7&#34;</span>,
+                <span style="color:#e6db74">&#34;queue_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7000&#34;</span>,
+                <span style="color:#e6db74">&#34;queue_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
+                <span style="color:#e6db74">&#34;order_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;buy_limit&#34;</span>,
+                <span style="color:#e6db74">&#34;state&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,
+                <span style="color:#e6db74">&#34;tri_price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
+                <span style="color:#e6db74">&#34;tri_direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+                <span style="color:#e6db74">&#34;remain_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;limit&#34;</span>
+            },
+        ],
+        <span style="color:#e6db74">&#34;page&#34;</span><span style="color:#f92672">:</span> {
+            <span style="color:#e6db74">&#34;prev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+            <span style="color:#e6db74">&#34;next&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/openapi/v1/spot/order/all?next_id=10100002606285&amp;page_index=2&#34;</span>
+        }
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+}
+</code></pre></div><h2 id="en_order_query_filled">8. Query order history</h2>
+<p>Request method: <code>GET</code><br>
+Request address: <code>/openapi/v1/spot/order/filled</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters: <code>Same as current open order query</code></p>
+<p>Response Data: <code>Same as current open order query</code></p>
+<h2 id="en_order_query_all">9. All order query</h2>
+<p>Request method: <code>GET</code><br>
+Request address: <code>/openapi/v1/spot/order/all</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters: <code>Same as current open order query</code></p>
+<p>Response Data: <code>Same as current open order query</code></p>
+<h2 id="en_order_query_match">10. Query filled order</h2>
+<p>Request method: <code>GET</code><br>
+Request address: <code>/openapi/v1/spot/order/matches</code><br>
+Request Authorization: <code>Yes</code></p>
+<p>Request Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Is it mandatory</th>
+<th>Description</th>
+<th>Default Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_id</td>
+<td>int</td>
+<td>false</td>
+<td>Order id</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>false</td>
+<td>Trading pair</td>
+<td>NA</td>
+<td>Example: BTC_USDT, ETH_USDT</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>string</td>
+<td>false</td>
+<td>Query start date</td>
+<td>NA</td>
+<td>Date format yyyy-mm-dd, Query by order generation time</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>string</td>
+<td>false</td>
+<td>Query end date</td>
+<td>NA</td>
+<td>Date format yyyy-mm-dd, Query by order generation time</td>
+</tr>
+<tr>
+<td>num</td>
+<td>int</td>
+<td>false</td>
+<td>Number of result sets</td>
+<td>10</td>
+<td>Number of result sets returned per page, max. 100, default is 10 if not filled</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Related to start_date, end_date
+<ol>
+<li>The start and end times must be simultaneous</li>
+<li>Start time should less than or equal to end time</li>
+<li>End time cannot be greater than the current time</li>
+</ol>
+</li>
+</ul>
+<p>Response Data:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Filled Orders list</td>
+</tr>
+<tr>
+<td>page</td>
+<td>object</td>
+<td>Pages info</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return parameters <code>page</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prev</td>
+<td>string</td>
+<td>Previous page, the value is &quot;&quot; when page 1..</td>
+</tr>
+<tr>
+<td>next</td>
+<td>string</td>
+<td>Next page, the value is &quot;&quot; if the length of the items array is less than num.</td>
+</tr>
+</tbody>
+</table>
+<p>Pagination usage：<code>Same as current open order query</code></p>
+<ul>
+<li>Return parameters <code>items</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Key Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>match_time</td>
+<td>int</td>
+<td>Order filled time</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Order side, buy: buy order, sell: sell order</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string</td>
+<td>Order filled price</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>string</td>
+<td>Order filled amount</td>
+</tr>
+<tr>
+<td>fee_asset</td>
+<td>string</td>
+<td>Fee asset</td>
+</tr>
+<tr>
+<td>fee_volume</td>
+<td>string</td>
+<td>fee</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>bonus_asset</td>
+<td>string</td>
+<td>Maker subsidy assets</td>
+</tr>
+<tr>
+<td>bonus_volume</td>
+<td>string</td>
+<td>Amount of maker subsidy assets</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">{
+    <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#e6db74">&#34;direction&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sell&#34;</span>,
+                <span style="color:#e6db74">&#34;fee_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;fee_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.09607&#34;</span>,
+                <span style="color:#e6db74">&#34;match_time&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1591431070</span>,
+                <span style="color:#e6db74">&#34;price&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;9607.04&#34;</span>,
+                <span style="color:#e6db74">&#34;symbol&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BTC_USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.01&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_asset&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USDT&#34;</span>,
+                <span style="color:#e6db74">&#34;bonus_volume&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.15&#34;</span>
+            }
+        ],
+        <span style="color:#e6db74">&#34;page&#34;</span><span style="color:#f92672">:</span> {
+            <span style="color:#e6db74">&#34;prev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+            <span style="color:#e6db74">&#34;next&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/openapi/v1/spot/order/matches?next_id=1312783&amp;page_index=2&#34;</span>
+        }
+    },
+    <span style="color:#e6db74">&#34;errmsg&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;errno&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+}
+</code></pre></div>
     
 
         </div>

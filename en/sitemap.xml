@@ -7,6 +7,10 @@
   </url>
   
   <url>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/2.spot_order/</loc>
+  </url>
+  
+  <url>
     <loc>https://bitwell-tech.github.io/oapi/en/</loc>
     <xhtml:link
                 rel="alternate"

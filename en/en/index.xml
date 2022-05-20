@@ -12,7 +12,21 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bitwell-tech.github.io/oapi/en/en/1.overview/</guid>
-      <description>API Overview Basic information</description>
+      <description>API Overview 0. Base endpoints Base endpoints: https://openapi.bitwellex.com, https://openapi.bitwellex.co
+Users can compare the latency between openapi.bitwellex.com and openapi.bitwellex.co, and choose the one with lower latency.
+Among these endpoints, openapi.bitwellex.co has certain link latency optimization for users using aws cloud service.
+1. Access Restriction Details of access restrictions in this section.
+ Rest API  When the access exceeds the rate limit, the status 429 is returned: Requests are too frequent.</description>
+    </item>
+    
+    <item>
+      <title>Spot API</title>
+      <link>https://bitwell-tech.github.io/oapi/en/en/2.spot_order/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/oapi/en/en/2.spot_order/</guid>
+      <description>Spot API The output structure is as follows
+   Key Key Type Note     data object Back to data   errmsg string Error messages   errno int Error code ( 0 : for success)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } The content-type of the output response header defaults to application/json and the corresponding errno is 0 if the response is successful.</description>
     </item>
     
   </channel>
