@@ -39,6 +39,10 @@
   </url>
   
   <url>
+    <loc>https://bitwell-tech.github.io/oapi/10.collateral/</loc>
+  </url>
+  
+  <url>
     <loc>https://bitwell-tech.github.io/oapi/</loc>
     <xhtml:link
                 rel="alternate"

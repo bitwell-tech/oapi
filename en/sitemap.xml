@@ -11,6 +11,30 @@
   </url>
   
   <url>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/3.market/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/4.asset/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/5.hq_api/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/6.hq_ws/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/7.user_ws/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bitwell-tech.github.io/oapi/en/en/8.collateral/</loc>
+  </url>
+  
+  <url>
     <loc>https://bitwell-tech.github.io/oapi/en/</loc>
     <xhtml:link
                 rel="alternate"

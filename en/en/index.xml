@@ -5,7 +5,11 @@
     <link>https://bitwell-tech.github.io/oapi/en/en/</link>
     <description>Recent content in Ens on BitWell API</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="https://bitwell-tech.github.io/oapi/en/en/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    
+	<atom:link href="https://bitwell-tech.github.io/oapi/en/en/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>API Overview</title>
       <link>https://bitwell-tech.github.io/oapi/en/en/1.overview/</link>
@@ -27,6 +31,80 @@ Among these endpoints, openapi.bitwellex.co has certain link latency optimizatio
       <guid>https://bitwell-tech.github.io/oapi/en/en/2.spot_order/</guid>
       <description>Spot API The output structure is as follows
    Key Key Type Note     data object Back to data   errmsg string Error messages   errno int Error code ( 0 : for success)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } The content-type of the output response header defaults to application/json and the corresponding errno is 0 if the response is successful.</description>
+    </item>
+    
+    <item>
+      <title>Market Symbols</title>
+      <link>https://bitwell-tech.github.io/oapi/en/en/3.market/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/oapi/en/en/3.market/</guid>
+      <description>Market Symbols 1. Spot-Market Symbols Request Method: GET
+Request Address: /pub/openapi/v1/symbol/spot/all
+Login Required: No
+Params: None
+Result:
+   Key Key Type Remark     base_asset string base asset code   quote_asset string quote asset code   symbol string symbol code   price_precision int price precision   volume_precision int volume precision   quote_asset_precision int quote asset precision   base_asset_precision int base asset precision    { &amp;#34;data&amp;#34;: [ { &amp;#34;base_asset&amp;#34;: &amp;#34;USDT&amp;#34;, &amp;#34;quote_asset&amp;#34;: &amp;#34;BTC&amp;#34;, &amp;#34;symbol&amp;#34;: &amp;#34;BTC_USDT&amp;#34;, &amp;#34;price_precision&amp;#34;: 2, &amp;#34;volume_precision&amp;#34;: 4 }, { &amp;#34;base_asset&amp;#34;: &amp;#34;USDT&amp;#34;, &amp;#34;symbol&amp;#34;: &amp;#34;ETH_USDT&amp;#34;, &amp;#34;price_precision&amp;#34;: 2, &amp;#34;quote_asset&amp;#34;: &amp;#34;ETH&amp;#34;, &amp;#34;volume_precision&amp;#34;: 4 } ], &amp;#34;errmsg&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;: 0 } 2.</description>
+    </item>
+    
+    <item>
+      <title>Asset API</title>
+      <link>https://bitwell-tech.github.io/oapi/en/en/4.asset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/oapi/en/en/4.asset/</guid>
+      <description>Asset API The output structure is as follows
+   Key Key Type Remark     data object return data   errmsg string error message   errno int error code( 0 : as success)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } The default content type of the output response header should be &amp;ldquo;application/json&amp;rdquo;. The &amp;ldquo;errno&amp;rdquo; would be 0 If it is successfully responsed.
+1. Asset Query Request Method: GET</description>
+    </item>
+    
+    <item>
+      <title>Quotation API</title>
+      <link>https://bitwell-tech.github.io/oapi/en/en/5.hq_api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/oapi/en/en/5.hq_api/</guid>
+      <description>Quotation API The output structure is as follows
+   Key Key Type Remark     data object response data   errmsg string error message   errno int error code( 0 : as success)    { &amp;#34;data&amp;#34;:{}, &amp;#34;errmsg&amp;#34;:&amp;#34;&amp;#34;, &amp;#34;errno&amp;#34;:0 } The default content type of the output response header should be &amp;ldquo;application/json&amp;rdquo;. The &amp;ldquo;errno&amp;rdquo; would be 0 If it is successfully responsed.
+1. K-line data(Candlestick Charts) Request Method: GET</description>
+    </item>
+    
+    <item>
+      <title>Quotation WS</title>
+      <link>https://bitwell-tech.github.io/oapi/en/en/6.hq_ws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/oapi/en/en/6.hq_ws/</guid>
+      <description>Quotation WS 1.WS Introduction Interface Address wss://openws.bitwellex.com/v2
+wss://openws.bitwellex.co/v2
+You can compare the delay time between openws.bitwellex.com and openws bitwellex.co,and choose the lower delay one for use. And we have did some link delay optimization for the domain openws.bitwellex.co for users who are on the AWS cloud services platform.
+QA QA1:
+ Q: The Kline time of WS is different from the value of the date in the historical data returned by the Kline interface by the unit.</description>
+    </item>
+    
+    <item>
+      <title>User related WS</title>
+      <link>https://bitwell-tech.github.io/oapi/en/en/7.user_ws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/oapi/en/en/7.user_ws/</guid>
+      <description>User related WS 1.summary Authorization / data format is same with the appointment of Quotation WS
+2.User Order Subscription format { &amp;#34;action&amp;#34;:&amp;#34;sub&amp;#34;, &amp;#34;symbol&amp;#34;:[&amp;#34;USER_ORDER&amp;#34;], &amp;#34;type&amp;#34;:&amp;#34;state_change&amp;#34; # Change of order } Response Same as order list format
+3.User Option Subscription format { &amp;#34;action&amp;#34;:&amp;#34;sub&amp;#34;, &amp;#34;symbol&amp;#34;:[&amp;#34;USER_OPTION&amp;#34;], &amp;#34;type&amp;#34;:&amp;#34;pos_change&amp;#34; # Change of position } Response { &amp;#34;symbol&amp;#34;: &amp;#34;BTC-20201016-7500-C&amp;#34; &amp;#34;open_mode&amp;#34;: &amp;#34;buy&amp;#34;, &amp;#34;open_volume&amp;#34;: 0, &amp;#34;frozen_volume&amp;#34;: 0, }    Key Key Type Description     symbol string symbol code   open_mode string open mode， buy: open buy， margin_sell:margin sell，covered_sell:covered sell   open_volume int open volume   frozen_volume int frozen volume    4.</description>
+    </item>
+    
+    <item>
+      <title>well Platform currency related data</title>
+      <link>https://bitwell-tech.github.io/oapi/en/en/8.collateral/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bitwell-tech.github.io/oapi/en/en/8.collateral/</guid>
+      <description>well Platform currency related data 1.Update of platform currency quantity classification Request Method: GET
+Request Address:/pub/openapi/v1/collateral/well_updates
+Login Required:No
+Params: None
+Result:
+   Key Key Type Remark     lock_amount number lock amount of WELL   circulate_amount number circulate amount of WELL   lock_percentage number lock_amount/circulate_amount, keep 4 decimal,   destroyed_amount number destroyed amount of WELL   announce_issued_amount number announce issued amount of WELL   destroyed_percentage number destroyed_amount/announce_issued_amount,keep 4 decimal    { &amp;#34;data&amp;#34;: { &amp;#34;lock_amount&amp;#34;: 36200, &amp;#34;circulate_amount&amp;#34;: 100000, &amp;#34;lock_percentage&amp;#34;: 0.</description>
     </item>
     
   </channel>
